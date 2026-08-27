@@ -1,25 +1,28 @@
 import { SiteFooter } from "@/components/layout/site-footer";
-import { AboutSection } from "@/components/sections/about-section";
-import { BeerLineupSection } from "@/components/sections/beer-lineup-section";
+import { CocktailSection } from "@/components/sections/cocktail-section";
+import { ConceptSection } from "@/components/sections/concept-section";
+import { FloorSection } from "@/components/sections/floor-section";
 import { FvSection } from "@/components/sections/fv-section";
-import { InformationSection } from "@/components/sections/information-section";
-import { LineSection } from "@/components/sections/line-section";
-import { MessageSection } from "@/components/sections/message-section";
-import { PeopleSection } from "@/components/sections/people-section";
-import { ShopSection } from "@/components/sections/shop-section";
+import { HowToSection } from "@/components/sections/how-to-section";
+import { MoodSection } from "@/components/sections/mood-section";
+import { NewsSection } from "@/components/sections/news-section";
+import { ShopInfoSection } from "@/components/sections/shop-info-section";
 
 export default function Home() {
   return (
     <>
       <main>
         <FvSection />
-        <InformationSection />
-        <AboutSection />
-        <BeerLineupSection />
-        <PeopleSection />
-        <MessageSection />
-        <LineSection />
-        <ShopSection />
+        {/* 漆喰テクスチャの共通背景 */}
+        <div className="bg-[url('/main/common/texture-bg.png')] [background-size:100%_100%]">
+          <ConceptSection />
+          <MoodSection />
+          <HowToSection />
+          <CocktailSection />
+          <FloorSection />
+        </div>
+        <ShopInfoSection />
+        <NewsSection />
       </main>
       <SiteFooter />
     </>

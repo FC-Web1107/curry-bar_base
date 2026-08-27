@@ -19,10 +19,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        "zen-maru": ["var(--font-zen-maru-gothic)", "sans-serif"],
-        "noto-sans": ["var(--font-noto-sans-jp)", "sans-serif"],
-        inter: ["var(--font-inter)", "sans-serif"],
-        shippori: ["var(--font-shippori-mincho)", "serif"],
+        mincho: ["var(--font-zen-old-mincho)", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

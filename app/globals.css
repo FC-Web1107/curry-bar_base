@@ -79,14 +79,13 @@
   }
 
   body {
-    @apply bg-white text-[#1b1b1b];
+    @apply bg-[#101010] text-white;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     font-family:
-      var(--font-zen-maru-gothic),
-      "Hiragino Sans",
-      "Hiragino Kaku Gothic ProN",
-      "Noto Sans JP",
-      sans-serif;
+      var(--font-zen-old-mincho),
+      "Hiragino Mincho ProN",
+      "Yu Mincho",
+      serif;
   }
 }
