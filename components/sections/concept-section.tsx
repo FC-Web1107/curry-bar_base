@@ -154,17 +154,17 @@ export function ConceptSection() {
               gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
             "
           >
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[36px]">
+            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
               家でもなく、職場でもない。
               <br />
               いつもの夜から少し離れて、
               <br />
               自分の時間を取り戻せる場所。
             </p>
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[36px]">
+            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
               鹿児島・天文館の地下にある
               <br />
-              「CURRY & BAR BASE」は、
+              「Curry & Bar Base」は、
               <br />
               カレーとカクテル、
               <br />

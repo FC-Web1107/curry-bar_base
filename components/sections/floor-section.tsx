@@ -1,7 +1,39 @@
 import Image from "next/image";
 
 const bodyParagraphClass =
-  "text-[14px] md:text-[20px] leading-[1.9] md:leading-[34px] tracking-[0.02em]";
+  "text-[14px] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.7] tracking-[0.02em]";
+
+// 店内写真（SPの横流しとmd以上のレイアウトで共用）
+const floorPhotos = [
+  {
+    src: "/main/floor/counter.png",
+    alt: "赤い間接照明に照らされたカウンター席",
+    width: 868,
+    height: 654,
+    spClass: "[--w:318] aspect-[371/217]",
+  },
+  {
+    src: "/main/floor/interior-shelf.png",
+    alt: "ボトルや小物が並ぶ店内の棚",
+    width: 602,
+    height: 814,
+    spClass: "[--w:280] aspect-[327/182]",
+  },
+  {
+    src: "/main/floor/cabinet.png",
+    alt: "木漏れ日のような照明が当たるキャビネット",
+    width: 604,
+    height: 810,
+    spClass: "[--w:318] aspect-[381/254]",
+  },
+  {
+    src: "/main/floor/cabinet.png",
+    alt: "木漏れ日のような照明が当たるキャビネット",
+    width: 604,
+    height: 810,
+    spClass: "[--w:280] aspect-[333/222]",
+  },
+];
 
 export function FloorSection() {
   return (
@@ -86,7 +118,7 @@ export function FloorSection() {
               "
             >
               <p className={bodyParagraphClass}>
-                オレンジ色の螺旋階段を降りた先にある、CURRY & BAR BASE。
+                オレンジ色の螺旋階段を降りた先にある、Curry & Bar Base。
               </p>
               <p className={bodyParagraphClass}>
                 地下にに広がるのは、秘密基地のような遊び心のある空間。
@@ -113,24 +145,24 @@ export function FloorSection() {
               </p>
             </div>
           </div>
-          {/* 店内写真（右列） */}
+          {/* 店内写真（右列。SPは下の横流しで表示する） */}
           <div
             className="
-              [--left:24] md:[--left:16]
-              [--right:24] md:[--right:0]
-              [--top:40] md:[--top:105]
-              flex flex-col
+              md:[--left:16]
+              md:[--right:0]
+              md:[--top:105]
+              hidden flex-col
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
               mr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              md:shrink-0
+              md:flex md:shrink-0
             "
           >
             <Image
-              src="/main/floor/counter.png"
-              alt="赤い間接照明に照らされたカウンター席"
-              width={868}
-              height={654}
+              src={floorPhotos[0].src}
+              alt={floorPhotos[0].alt}
+              width={floorPhotos[0].width}
+              height={floorPhotos[0].height}
               className="
                 [--w:318] md:[--w:371]
                 w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
@@ -139,10 +171,10 @@ export function FloorSection() {
               sizes="(min-width: 768px) 29vw, 82vw"
             />
             <Image
-              src="/main/floor/interior-shelf.png"
-              alt="ボトルや小物が並ぶ店内の棚"
-              width={602}
-              height={814}
+              src={floorPhotos[1].src}
+              alt={floorPhotos[1].alt}
+              width={floorPhotos[1].width}
+              height={floorPhotos[1].height}
               className="
                 [--w:280] md:[--w:327]
                 [--top:32] md:[--top:75]
@@ -158,20 +190,62 @@ export function FloorSection() {
             />
           </div>
         </div>
-        {/* 店内写真（下段） */}
+        {/* SP: 店内写真を右から左へ流す（ホバー中は停止） */}
         <div
           className="
-            [--top:32] md:[--top:56]
-            flex flex-col
+            [--top:32]
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-            md:flex-row md:items-start
+            overflow-hidden
+            motion-reduce:overflow-x-auto
+            md:hidden
+          "
+        >
+          <ul
+            className="
+              [--gap:16]
+              flex w-max items-start
+              gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              animate-marquee-left
+              hover:[animation-play-state:paused]
+              motion-reduce:animate-none
+            "
+          >
+            {[0, 1].map((copy) =>
+              floorPhotos.map((photo, index) => (
+                <li key={`${copy}-${index}`} className="shrink-0">
+                  <Image
+                    src={photo.src}
+                    // 2組目は読み上げ不要
+                    alt={copy === 0 ? photo.alt : ""}
+                    aria-hidden={copy === 1}
+                    width={photo.width}
+                    height={photo.height}
+                    className={`
+                      w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
+                      border border-[#cbb394]/60 object-cover
+                      ${photo.spClass}
+                    `}
+                    sizes="82vw"
+                  />
+                </li>
+              )),
+            )}
+          </ul>
+        </div>
+        {/* 店内写真（下段。SPは上の横流しで表示する） */}
+        <div
+          className="
+            md:[--top:56]
+            hidden flex-col
+            mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+            md:flex md:flex-row md:items-start
           "
         >
           <Image
-            src="/main/floor/cabinet.png"
-            alt="木漏れ日のような照明が当たるキャビネット"
-            width={604}
-            height={810}
+            src={floorPhotos[2].src}
+            alt={floorPhotos[2].alt}
+            width={floorPhotos[2].width}
+            height={floorPhotos[2].height}
             className="
               [--w:318] md:[--w:381]
               [--left:24] md:[--left:107]
@@ -182,10 +256,10 @@ export function FloorSection() {
             sizes="(min-width: 768px) 30vw, 82vw"
           />
           <Image
-            src="/main/floor/cabinet.png"
-            alt="木漏れ日のような照明が当たるキャビネット"
-            width={604}
-            height={810}
+            src={floorPhotos[3].src}
+            alt={floorPhotos[3].alt}
+            width={floorPhotos[3].width}
+            height={floorPhotos[3].height}
             className="
               [--w:280] md:[--w:333]
               [--top:32] md:[--top:111]

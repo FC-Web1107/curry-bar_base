@@ -4,12 +4,19 @@ import { useEffect, useRef } from "react";
 
 type ParallaxProps = {
   children: React.ReactNode;
-  /** スクロールに応じて上下に動かす量（px） */
+  /** スクロールに応じて上下に動かす量（px。1280px幅での値） */
   offset?: number;
+  /** 移動量も画面幅に応じて縮小する（スケール方式に合わせる） */
+  scaleWithViewport?: boolean;
   className?: string;
 };
 
-export function Parallax({ children, offset = 50, className }: ParallaxProps) {
+export function Parallax({
+  children,
+  offset = 50,
+  scaleWithViewport = false,
+  className,
+}: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
   const appliedY = useRef(0);
 
@@ -31,8 +38,12 @@ export function Parallax({ children, offset = 50, className }: ParallaxProps) {
       const progress =
         (baseCenter - viewportHeight / 2) / ((viewportHeight + rect.height) / 2);
       const clamped = Math.max(-1, Math.min(1, progress));
+      // 1280px基準の移動量を、必要に応じて画面幅の比率で縮小する
+      const scale = scaleWithViewport
+        ? Math.min(window.innerWidth / 1280, 1)
+        : 1;
       // スクロールした方向へ遅れてついてくる動き（下へスクロール→下方向へ移動）
-      const y = -clamped * offset;
+      const y = -clamped * offset * scale;
       appliedY.current = y;
       element.style.transform = `translateY(${y.toFixed(1)}px)`;
     };
@@ -49,7 +60,7 @@ export function Parallax({ children, offset = 50, className }: ParallaxProps) {
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(frame);
     };
-  }, [offset]);
+  }, [offset, scaleWithViewport]);
 
   return (
     <div ref={ref} className={className}>

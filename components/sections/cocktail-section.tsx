@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CocktailCardDeck } from "@/components/sections/cocktail-card-deck";
 import { ChevronRight } from "@/components/ui/chevron-right";
 import { menuItems } from "@/lib/menu-items";
 
@@ -12,7 +13,7 @@ const cardLayoutClasses = [
   "[--left:0] md:[--left:80] [--top:48] md:[--top:0]",
 ];
 
-function MenuCard({ index }: { index: number }) {
+function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean }) {
   const item = menuItems[index];
   return (
     <Link
@@ -21,10 +22,18 @@ function MenuCard({ index }: { index: number }) {
         [--w:340] md:[--w:408]
         grid aspect-[386/511]
         w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-        mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-        ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
         border border-[#cbb394]/60 bg-[#0d0b09] p-2.5
-        ${cardLayoutClasses[index]}
+        transition-transform duration-300 ease-out motion-reduce:transition-none
+        md:hover:translate-y-[10px]
+        ${
+          stacked
+            ? ""
+            : `
+              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+              ${cardLayoutClasses[index]}
+            `
+        }
       `}
     >
       <article className="grid h-full w-full">
@@ -64,7 +73,7 @@ function MenuCard({ index }: { index: number }) {
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               font-normal
               text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[1.15]
+              leading-[1.15] md:whitespace-nowrap
             "
           >
             {item.title}
@@ -84,7 +93,7 @@ function MenuCard({ index }: { index: number }) {
             className="
               [--top:10] md:[--top:12]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              text-[15px] leading-[1.6] tracking-[0.2em] text-[#cbb394] md:text-[20px]
+              text-[15px] leading-[1.6] tracking-[0.2em] text-[#cbb394] [--fs:20] md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
             "
           >
             {item.subtitle}
@@ -94,7 +103,7 @@ function MenuCard({ index }: { index: number }) {
             className="
               [--top:20] md:[--top:24]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              text-left text-[13px] leading-[1.9] tracking-[0.04em] md:text-[20px]
+              text-left text-[13px] leading-[1.9] tracking-[0.04em] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
             "
           >
             {item.description}
@@ -156,7 +165,7 @@ export function CocktailSection() {
               font-normal leading-[1.5]
             "
           >
-            BASEの楽しみ方
+            Baseの楽しみ方
           </h2>
           <span
             aria-hidden="true"
@@ -167,31 +176,46 @@ export function CocktailSection() {
             "
           />
         </div>
-        {/* メニューカード 1段目 */}
-        <div
+        {/* SP: カードを重ねて1枚ずつ切り替える */}
+        <CocktailCardDeck
           className="
-            [--top:56] md:[--top:36]
-            flex flex-col items-center
+            [--top:56]
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-            md:flex-row md:items-start
+            md:hidden
           "
         >
-          {[0, 1, 2].map((index) => (
-            <MenuCard key={menuItems[index].slug} index={index} />
+          {menuItems.map((item, index) => (
+            <MenuCard key={item.slug} index={index} stacked />
           ))}
-        </div>
-        {/* メニューカード 2段目 */}
-        <div
-          className="
-            [--top:0] md:[--top:16]
-            flex flex-col items-center
-            mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-            md:flex-row md:items-start
-          "
-        >
-          {[3, 4].map((index) => (
-            <MenuCard key={menuItems[index].slug} index={index} />
-          ))}
+        </CocktailCardDeck>
+        {/* md以上: Figmaの配置 */}
+        <div className="hidden md:block">
+          {/* メニューカード 1段目 */}
+          <div
+            className="
+              md:[--top:36]
+              flex flex-col items-center
+              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+              md:flex-row md:items-start
+            "
+          >
+            {[0, 1, 2].map((index) => (
+              <MenuCard key={menuItems[index].slug} index={index} />
+            ))}
+          </div>
+          {/* メニューカード 2段目 */}
+          <div
+            className="
+              md:[--top:16]
+              flex flex-col items-center
+              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+              md:flex-row md:items-start
+            "
+          >
+            {[3, 4].map((index) => (
+              <MenuCard key={menuItems[index].slug} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -2,15 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LuBookOpen, LuMapPin, LuSoup, LuUser } from "react-icons/lu";
 import { ChevronRight } from "@/components/ui/chevron-right";
-
-// TODO: リンク先はページ内アンカーの仮設定（正式な遷移先が決まり次第差し替え）
-const navItems = [
-  { en: "Home", jp: "ホーム", href: "#home" },
-  { en: "How to", jp: "", href: "#how-to" },
-  { en: "Cocktail", jp: "", href: "#cocktail" },
-  { en: "Floor", jp: "", href: "#floor" },
-  { en: "Map", jp: "", href: "#map" },
-];
+import { navItems } from "@/lib/nav-items";
 
 // TODO: アイコンはreact-icons（Lucide）による仮素材（正式アイコン支給後に差し替え）
 const features = [
@@ -25,10 +17,11 @@ const ctaButtons = [
   {
     label: "アクセス・営業時間",
     href: "#map",
-    variantClass: "border border-[#c9803f] text-[#c9803f]",
+    variantClass:
+      "border border-[#c9803f] bg-white/10 backdrop-blur-[2px] text-[#c9803f]",
   },
   {
-    label: "BASEの楽しみ方を見る",
+    label: "Baseの楽しみ方を見る",
     href: "#cocktail",
     variantClass:
       "border border-[#e0a06a]/70 bg-[linear-gradient(to_bottom,#cd884f,#a2602c)] text-white",
@@ -99,7 +92,7 @@ export function FvSection() {
               className="
                 [--top:10] md:[--top:14]
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-                text-[15px] leading-[1.6] tracking-[0.14em] text-[#cbb394] md:text-[20px]
+                text-[15px] leading-[1.6] tracking-[0.14em] text-[#cbb394] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
               "
             >
               鹿児島・天文館・ドンキ横 / 地下1階
@@ -135,7 +128,7 @@ export function FvSection() {
                   >
                     {item.en}
                     {item.jp && (
-                      <span className="whitespace-nowrap text-[13px] md:text-[20px]">
+                      <span className="whitespace-nowrap text-[13px] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]">
                         {item.jp}
                       </span>
                     )}
@@ -172,11 +165,11 @@ export function FvSection() {
         >
           鹿児島・天文館の地下にある、
           <br />
-          カレーとカクテルを楽しめる小さなBAR。
+          カレーとカクテルを楽しめる小さなBar。
           <br />
           飲み終わりの締めカレーにも。
         </p>
-        {/* BARの特徴バッジ */}
+        {/* Barの特徴バッジ */}
         <ul
           className="
             [--top:32] md:[--top:44]
@@ -201,7 +194,7 @@ export function FvSection() {
                 py-1
                 gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
                 rounded-[min(calc(100vw*var(--radius)/var(--base)),calc(var(--radius)*1px))]
-                border border-[#d9d9d9]/60
+                border border-[#d9d9d9]/60 bg-white/10 backdrop-blur-[2px]
               "
             >
               <feature.icon
@@ -212,7 +205,7 @@ export function FvSection() {
                   h-auto shrink-0 text-[#c9803f]
                 "
               />
-              <span className="text-[14px] leading-[1.4] md:text-[20px]">
+              <span className="text-[14px] leading-[1.4] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]">
                 {feature.label}
               </span>
             </li>
@@ -245,6 +238,7 @@ export function FvSection() {
                 rounded-[min(calc(100vw*var(--radius)/var(--base)),calc(var(--radius)*1px))]
                 [--fs:16] md:[--fs:20]
                 text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
                 leading-[1.4] tracking-[0.06em]
                 ${button.variantClass}
               `}

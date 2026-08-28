@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "@/components/ui/chevron-right";
+import { InstagramIcon } from "@/components/ui/instagram-icon";
 
 // TODO: Instagramの投稿・キャプションはFigma上もプレースホルダー（連携方法の確定待ち）
 const newsPosts = [
@@ -101,7 +102,7 @@ export function NewsSection() {
                 {/* 投稿画像プレースホルダー */}
                 <div aria-hidden="true" className="aspect-[121/143] w-full bg-[#d9d9d9]" />
                 {/* キャプション */}
-                <p className="[--top:16] md:[--top:21] mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))] text-[8px] md:text-[20px] leading-[10px] md:leading-[1.7]">
+                <p className="[--top:16] md:[--top:21] mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))] text-[8px] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[10px] md:leading-[1.7]">
                   {post.caption}
                 </p>
               </li>
@@ -135,11 +136,7 @@ export function NewsSection() {
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               "
             >
-              {/* Instagramアイコン */}
-              <span className="grid h-[36px] w-[38px] rounded-[9px] border-[3px] border-white">
-                <span className="col-start-1 row-start-1 h-[18px] w-[18px] place-self-center rounded-full border-[3px] border-white" />
-                <span className="col-start-1 row-start-1 mr-[4px] mt-[3px] h-[4px] w-[4px] justify-self-end rounded-full bg-white" />
-              </span>
+              <InstagramIcon />
             </Link>
             {/* TODO: LINE公式アカウントのURL未確定のため仮で「#」 */}
             <Link
@@ -153,7 +150,7 @@ export function NewsSection() {
               {/* 左端の白い飾り */}
               <span
                 aria-hidden="true"
-                className="[--h:39] h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))] w-[11px] bg-[#d9d9d9]"
+                className="[--h:39] [--w:11] h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))] w-[11px] md:w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))] bg-[#d9d9d9]"
               />
               <span
                 className="
@@ -162,8 +159,11 @@ export function NewsSection() {
                   w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
                   h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
                   border border-[#d9d9d9]
+                  [--pl:19] [--pr:14]
                   pl-[19px] pr-[14px]
-                  text-[15px] md:text-[20px]
+                  md:pl-[min(calc(100vw*var(--pl)/var(--base)),calc(var(--pl)*1px))]
+                  md:pr-[min(calc(100vw*var(--pr)/var(--base)),calc(var(--pr)*1px))]
+                  text-[15px] [--fs:20] md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
                 "
               >
                 LINE公式アカウント

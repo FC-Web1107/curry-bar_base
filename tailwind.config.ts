@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      // タブレット（600px〜）も1280px基準のPCデザインを縮小表示する
+      screens: {
+        md: "600px",
+      },
       fontFamily: {
         mincho: ["var(--font-zen-old-mincho)", "serif"],
       },
@@ -70,10 +74,16 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        // 右から左へ一定速度で流す（同じ並びを2組並べて半分ぶん動かす）
+        "marquee-left": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "marquee-left": "marquee-left 20s linear infinite",
       },
     },
   },

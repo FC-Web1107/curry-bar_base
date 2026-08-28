@@ -45,7 +45,7 @@ export function MoodSection() {
               gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
             "
           >
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[36px]">
+            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
               店内に流れるのは、
               <br />
               落ち着いた音楽と、
@@ -110,7 +110,7 @@ export function MoodSection() {
           <div
             className="
               [--top:40] md:[--top:258]
-              [--left:24] md:[--left:-58]
+              [--left:24] md:[--left:-78]
               [--gap:16] md:[--gap:10]
               flex flex-col
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
@@ -118,12 +118,12 @@ export function MoodSection() {
               gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
             "
           >
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[36px]">
+            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
               バーが初めての方も、
               <br />
               お一人でのご来店も大歓迎です。
             </p>
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[36px]">
+            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
               その日の気分に寄り添う一杯を、
               <br />
               一緒に見つけます。
@@ -194,7 +194,7 @@ export function MoodSection() {
               leading-[0.96] tracking-[-0.02em] text-[#cbb394]
             "
           >
-            気軽にBASEへお越しください。
+            気軽にBaseへお越しください。
           </p>
         </div>
       </div>

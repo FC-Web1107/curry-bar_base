@@ -1,4 +1,5 @@
 import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { CocktailSection } from "@/components/sections/cocktail-section";
 import { ConceptSection } from "@/components/sections/concept-section";
 import { FloorSection } from "@/components/sections/floor-section";
@@ -11,18 +12,34 @@ import { ShopInfoSection } from "@/components/sections/shop-info-section";
 export default function Home() {
   return (
     <>
+      <SiteHeader />
       <main>
-        <FvSection />
-        {/* 漆喰テクスチャの共通背景 */}
-        <div className="bg-[url('/main/common/texture-bg.png')] [background-size:100%_100%]">
-          <ConceptSection />
-          <MoodSection />
-          <HowToSection />
-          <CocktailSection />
-          <FloorSection />
+        {/* FVは背景として固定し、後続セクションが上に重なって競り上がる。
+            固定はロゴ・ナビが画面トップに達してから始める（FV下部のボタンを見せるため） */}
+        <div
+          className="
+            [--base:390] md:[--base:1280]
+            [--top:24] md:[--top:88]
+            sticky z-0
+            top-[calc(-1*min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px)))]
+          "
+        >
+          <FvSection />
         </div>
-        <ShopInfoSection />
-        <NewsSection />
+        {/* 固定したFVを見せておく余白。後続セクションが上がってくるまでの間 */}
+        <div aria-hidden="true" className="h-[50vh]" />
+        <div id="after-fv" className="relative z-10">
+          {/* 漆喰テクスチャの共通背景 */}
+          <div className="bg-[url('/main/common/texture-bg.png')] [background-size:100%_100%]">
+            <ConceptSection />
+            <MoodSection />
+            <HowToSection />
+            <CocktailSection />
+            <FloorSection />
+          </div>
+          <NewsSection />
+          <ShopInfoSection />
+        </div>
       </main>
       <SiteFooter />
     </>

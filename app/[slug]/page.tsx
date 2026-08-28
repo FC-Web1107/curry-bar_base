@@ -160,7 +160,7 @@ export default function MenuPage({ params }: MenuPageProps) {
               h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
               px-[min(calc(100vw*var(--px)/var(--base)),calc(var(--px)*1px))]
               rounded-[10px] border border-[#cbb394] text-[#cbb394]
-              text-[15px] md:text-[20px] tracking-[0.1em]
+              text-[15px] [--fs:20] md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] tracking-[0.1em]
             "
           >
             <span className="col-start-2 text-center">トップへ戻る</span>

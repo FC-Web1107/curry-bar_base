@@ -18,7 +18,7 @@ export const menuItems: MenuItem[] = [
     slug: "curry",
     no: "01",
     title: "CURRY",
-    subtitle: "BASEのカレー",
+    subtitle: "Baseのカレー",
     description:
       "野菜をじっくり溶かし込んだ、甘みからスパイスの余韻へ変化する欧風スパイスカレー。",
     image: {
@@ -34,7 +34,7 @@ export const menuItems: MenuItem[] = [
     title: "STORY COCKTAIL",
     subtitle: "物語カクテル",
     description:
-      "一杯のカクテルに、一つの物語を。舞子の旅シリーズなど、BASEならではのカクテル体験。",
+      "一杯のカクテルに、一つの物語を。舞子の旅シリーズなど、Baseならではのカクテル体験。",
     image: {
       src: "/main/concept/olvo-cocktail.png",
       alt: "オリジナルカクテル「Olvo」とサインボード",
@@ -62,7 +62,7 @@ export const menuItems: MenuItem[] = [
     title: "GACHA BINGO",
     subtitle: "カクテルガシャビンゴ",
     description:
-      "何が出るかわからない楽しさと、ビンゴを組み合わせたBASEの遊び体験。",
+      "何が出るかわからない楽しさと、ビンゴを組み合わせたBaseの遊び体験。",
     image: {
       src: "/main/mood/cocktail-lineup.jpg",
       alt: "色とりどりのカクテルが並ぶバックバー",

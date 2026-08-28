@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Parallax } from "@/components/ui/parallax";
 
 // BASEの利用シーン
 const scenes = [
@@ -13,15 +14,27 @@ const scenes = [
 export function HowToSection() {
   return (
     <section id="how-to" className="[--base:390] md:[--base:1280] w-full">
-      {/* ウイスキー棚の写真 */}
-      <Image
-        src="/main/how-to/whisky-shelf.jpg"
-        alt="ウイスキーボトルが並ぶバックバーの棚"
-        width={1179}
-        height={782}
-        className="aspect-[390/300] w-full object-cover md:aspect-[1280/604]"
-        sizes="100vw"
-      />
+      {/* ウイスキー棚の写真（強めのパララックス） */}
+      <div className="grid w-full overflow-hidden aspect-[390/300] md:aspect-[1280/604]">
+        <Parallax
+          offset={160}
+          scaleWithViewport
+          className="col-start-1 row-start-1 flex h-full min-h-0 w-full items-center"
+        >
+          <Image
+            src="/main/how-to/whisky-shelf.jpg"
+            alt="ウイスキーボトルが並ぶバックバーの棚"
+            width={1179}
+            height={782}
+            className="
+              [--h:510] md:[--h:1027]
+              w-full max-w-none shrink-0 object-cover
+              h-[calc(100vw*var(--h)/var(--base))]
+            "
+            sizes="100vw"
+          />
+        </Parallax>
+      </div>
       <div
         className="
           [--px:24] md:[--px:0]
@@ -29,6 +42,7 @@ export function HowToSection() {
           mx-auto flex w-full max-w-[1280px] flex-col
           px-[min(calc(100vw*var(--px)/var(--base)),calc(var(--px)*1px))]
           pt-[min(calc(100vw*var(--py)/var(--base)),calc(var(--py)*1px))]
+          md:items-center
           lg:flex-row lg:items-start
         "
       >
@@ -59,7 +73,7 @@ export function HowToSection() {
               leading-[1.6] tracking-[0.1em] text-[#cbb394]
             "
           >
-            こんな夜にBASEへ
+            こんな夜にBaseへ
           </p>
           {/* 飾り線 */}
           <span
