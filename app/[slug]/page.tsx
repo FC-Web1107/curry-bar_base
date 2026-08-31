@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight } from "@/components/ui/chevron-right";
 import { menuItems } from "@/lib/menu-items";
+import { asset } from "@/lib/utils";
 
 type MenuPageProps = {
   params: { slug: string };
@@ -124,7 +125,7 @@ export default function MenuPage({ params }: MenuPageProps) {
           </p>
           {/* メニュー写真 */}
           <Image
-            src={item.image.src}
+            src={asset(item.image.src)}
             alt={item.image.alt}
             width={item.image.width}
             height={item.image.height}

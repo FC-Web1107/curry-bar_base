@@ -3,6 +3,7 @@ import Link from "next/link";
 import { LuBookOpen, LuMapPin, LuSoup, LuUser } from "react-icons/lu";
 import { ChevronRight } from "@/components/ui/chevron-right";
 import { navItems } from "@/lib/nav-items";
+import { asset } from "@/lib/utils";
 
 // TODO: アイコンはreact-icons（Lucide）による仮素材（正式アイコン支給後に差し替え）
 const features = [
@@ -34,7 +35,7 @@ export function FvSection() {
       {/* メインビジュアル */}
       <div className="col-start-1 row-start-1 grid">
         <Image
-          src="/main/fv/main-visual.jpg"
+          src={asset("/main/fv/main-visual.jpg")}
           alt="カウンター越しにボトルを取るバーテンダーとマンゴヤンのボトル"
           width={1179}
           height={756}

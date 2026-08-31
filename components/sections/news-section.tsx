@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronRight } from "@/components/ui/chevron-right";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { asset } from "@/lib/utils";
 
 // TODO: Instagramの投稿・キャプションはFigma上もプレースホルダー（連携方法の確定待ち）
 const newsPosts = [
@@ -25,12 +26,7 @@ export function NewsSection() {
   return (
     <section
       id="news"
-      className="
-        [--base:390] md:[--base:1280]
-        w-full
-        bg-[image:linear-gradient(rgba(0,0,0,0.59),rgba(0,0,0,0.59)),url('/main/news/smoke-bg.jpg')]
-        bg-cover bg-center
-      "
+      className="[--base:390] md:[--base:1280] w-full bg-cover bg-center" style={{ backgroundImage: `image:linear-gradient(rgba(0,0,0,0.59),rgba(0,0,0,0.59)),url('${asset("/main/news/smoke-bg.jpg")}')` }}
     >
       <div
         className="

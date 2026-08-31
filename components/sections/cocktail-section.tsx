@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CocktailCardDeck } from "@/components/sections/cocktail-card-deck";
 import { ChevronRight } from "@/components/ui/chevron-right";
 import { menuItems } from "@/lib/menu-items";
+import { asset } from "@/lib/utils";
 
 // カードの配置（Figmaの額縁カードの位置を踏襲）
 const cardLayoutClasses = [
@@ -40,7 +41,7 @@ function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean
         {/* 背景写真 */}
         <div className="col-start-1 row-start-1 grid overflow-hidden border border-[#cbb394]/30 bg-black">
           <Image
-            src={item.image.src}
+            src={asset(item.image.src)}
             alt=""
             width={item.image.width}
             height={item.image.height}

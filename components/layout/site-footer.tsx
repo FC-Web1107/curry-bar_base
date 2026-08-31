@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { asset } from "@/lib/utils";
 
 const footerNavItems = [
   { label: "Home", href: "#home" },
@@ -11,10 +12,7 @@ const footerNavItems = [
 export function SiteFooter() {
   return (
     <footer
-      className="
-        [--base:390] md:[--base:1280]
-        w-full bg-[url('/main/common/texture-bg.png')] bg-cover bg-bottom
-      "
+      className="[--base:390] md:[--base:1280] w-full bg-cover bg-bottom" style={{ backgroundImage: `url('${asset("/main/common/texture-bg.png")}')` }}
     >
       {/* フッターナビ */}
       <nav

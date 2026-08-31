@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/utils";
 
 export function MoodSection() {
   return (
@@ -16,7 +17,7 @@ export function MoodSection() {
         <div className="flex flex-col md:flex-row md:items-start">
           {/* 青いカクテルの写真 */}
           <Image
-            src="/main/mood/blue-cocktail.png"
+            src={asset("/main/mood/blue-cocktail.png")}
             alt="カウンターに置かれた青いカクテル"
             width={816}
             height={1020}
@@ -68,7 +69,7 @@ export function MoodSection() {
             "
           >
             <Image
-              src="/main/mood/curry.jpg"
+              src={asset("/main/mood/curry.jpg")}
               alt="鉄鍋で提供されるカレー"
               width={680}
               height={1020}
@@ -90,7 +91,7 @@ export function MoodSection() {
         >
           {/* カクテルのラインナップ写真 */}
           <Image
-            src="/main/mood/cocktail-lineup.jpg"
+            src={asset("/main/mood/cocktail-lineup.jpg")}
             alt="色とりどりのカクテルが並ぶバックバー"
             width={1179}
             height={734}
@@ -149,7 +150,7 @@ export function MoodSection() {
             "
           >
             <Image
-              src="/main/fv/main-visual.jpg"
+              src={asset("/main/fv/main-visual.jpg")}
               alt="ランプに照らされたマンゴヤンのボトル"
               width={1179}
               height={756}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { asset } from "@/lib/utils";
 
 const infoRight = [
   {
@@ -140,7 +141,7 @@ export function ShopInfoSection() {
         >
           <div className="w-full overflow-hidden aspect-[796/399]">
             <iframe
-              src={MAP_EMBED_URL}
+              src={asset(MAP_EMBED_URL)}
               title="Curry&Bar Base周辺の地図（鹿児島市山之口町12−26 桜屋ビル B1F）"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

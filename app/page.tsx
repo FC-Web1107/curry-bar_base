@@ -8,6 +8,7 @@ import { HowToSection } from "@/components/sections/how-to-section";
 import { MoodSection } from "@/components/sections/mood-section";
 import { NewsSection } from "@/components/sections/news-section";
 import { ShopInfoSection } from "@/components/sections/shop-info-section";
+import { asset } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
         <div aria-hidden="true" className="h-[50vh]" />
         <div id="after-fv" className="relative z-10">
           {/* 漆喰テクスチャの共通背景 */}
-          <div className="bg-[url('/main/common/texture-bg.png')] [background-size:100%_100%]">
+          <div className="[background-size:100%_100%]" style={{ backgroundImage: `url('${asset("/main/common/texture-bg.png")}')` }}>
             <ConceptSection />
             <MoodSection />
             <HowToSection />

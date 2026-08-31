@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/utils";
 
 const bodyParagraphClass =
   "text-[14px] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.7] tracking-[0.02em]";
@@ -159,7 +160,7 @@ export function FloorSection() {
             "
           >
             <Image
-              src={floorPhotos[0].src}
+              src={asset(floorPhotos[0].src)}
               alt={floorPhotos[0].alt}
               width={floorPhotos[0].width}
               height={floorPhotos[0].height}
@@ -171,7 +172,7 @@ export function FloorSection() {
               sizes="(min-width: 768px) 29vw, 82vw"
             />
             <Image
-              src={floorPhotos[1].src}
+              src={asset(floorPhotos[1].src)}
               alt={floorPhotos[1].alt}
               width={floorPhotos[1].width}
               height={floorPhotos[1].height}
@@ -214,7 +215,7 @@ export function FloorSection() {
               floorPhotos.map((photo, index) => (
                 <li key={`${copy}-${index}`} className="shrink-0">
                   <Image
-                    src={photo.src}
+                    src={asset(photo.src)}
                     // 2組目は読み上げ不要
                     alt={copy === 0 ? photo.alt : ""}
                     aria-hidden={copy === 1}
@@ -242,7 +243,7 @@ export function FloorSection() {
           "
         >
           <Image
-            src={floorPhotos[2].src}
+            src={asset(floorPhotos[2].src)}
             alt={floorPhotos[2].alt}
             width={floorPhotos[2].width}
             height={floorPhotos[2].height}
@@ -256,7 +257,7 @@ export function FloorSection() {
             sizes="(min-width: 768px) 30vw, 82vw"
           />
           <Image
-            src={floorPhotos[3].src}
+            src={asset(floorPhotos[3].src)}
             alt={floorPhotos[3].alt}
             width={floorPhotos[3].width}
             height={floorPhotos[3].height}

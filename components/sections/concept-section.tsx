@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Parallax } from "@/components/ui/parallax";
+import { asset } from "@/lib/utils";
 
 export function ConceptSection() {
   return (
@@ -31,7 +32,7 @@ export function ConceptSection() {
             "
           >
             <Image
-              src="/main/concept/floor-illustration.png"
+              src={asset("/main/concept/floor-illustration.png")}
               alt="welcomeの文字と、1階の扉から螺旋階段で地下1階のバーへ降りるフロアイラスト"
               width={1122}
               height={1402}
@@ -134,7 +135,7 @@ export function ConceptSection() {
             "
           >
             <Image
-              src="/main/concept/olvo-cocktail.png"
+              src={asset("/main/concept/olvo-cocktail.png")}
               alt="オリジナルカクテル「Olvo」〜謝り続ける怪物〜のグラスとサインボード"
               width={945}
               height={513}
@@ -185,7 +186,7 @@ export function ConceptSection() {
           "
         >
           <Image
-            src="/main/concept/olvo-cocktail.png"
+            src={asset("/main/concept/olvo-cocktail.png")}
             alt="オリジナルカクテル「Olvo」〜謝り続ける怪物〜のグラスとサインボード"
             width={945}
             height={513}

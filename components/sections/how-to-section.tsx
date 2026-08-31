@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Parallax } from "@/components/ui/parallax";
+import { asset } from "@/lib/utils";
 
 // BASEの利用シーン
 const scenes = [
@@ -22,7 +23,7 @@ export function HowToSection() {
           className="col-start-1 row-start-1 flex h-full min-h-0 w-full items-center"
         >
           <Image
-            src="/main/how-to/whisky-shelf.jpg"
+            src={asset("/main/how-to/whisky-shelf.jpg")}
             alt="ウイスキーボトルが並ぶバックバーの棚"
             width={1179}
             height={782}
@@ -124,7 +125,7 @@ export function HowToSection() {
         </div>
         {/* ウイスキーグラスの写真 */}
         <Image
-          src="/main/how-to/whisky-glasses.jpg"
+          src={asset("/main/how-to/whisky-glasses.jpg")}
           alt="果皮を添えたウイスキーグラスが並ぶ様子"
           width={1360}
           height={1020}
