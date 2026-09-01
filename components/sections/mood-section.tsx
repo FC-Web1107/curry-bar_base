@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Parallax } from "@/components/ui/parallax";
 import { asset } from "@/lib/utils";
 
 export function MoodSection() {
@@ -8,36 +9,43 @@ export function MoodSection() {
       className="
         [--base:390] md:[--base:1280]
         [--py:80] md:[--py:76]
+        [--pb:50] md:[--pb:0]
         w-full
         pt-[min(calc(100vw*var(--py)/var(--base)),calc(var(--py)*1px))]
+        pb-[min(calc(100vw*var(--pb)/var(--base)),calc(var(--pb)*1px))]
       "
     >
       <div className="mx-auto w-full max-w-[1280px]">
         {/* 青いカクテル・空気感テキスト・カレーの写真 */}
         <div className="flex flex-col md:flex-row md:items-start">
           {/* 青いカクテルの写真 */}
-          <Image
-            src={asset("/main/mood/blue-cocktail.png")}
-            alt="カウンターに置かれた青いカクテル"
-            width={816}
-            height={1020}
+          <Parallax
+            offset={40}
+            scaleWithViewport
             className="
               [--w:240] md:[--w:287]
-              [--top:0] md:[--top:36]
+              [--top:30] md:[--top:36]
               [--left:24] md:[--left:121]
               order-2
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              aspect-[287/294] border border-[#cbb394]/60 object-cover
               md:order-2
             "
-            sizes="(min-width: 768px) 22vw, 62vw"
-          />
+          >
+            <Image
+              src={asset("/main/mood/blue-cocktail.png")}
+              alt="カウンターに置かれた青いカクテル"
+              width={816}
+              height={1020}
+              className="aspect-[287/294] w-full border border-[#cbb394]/60 object-cover"
+              sizes="(min-width: 768px) 22vw, 62vw"
+            />
+          </Parallax>
           {/* 空気感テキスト */}
           <div
             className="
-              [--top:40] md:[--top:150]
+              [--top:70] md:[--top:150]
               [--left:24] md:[--left:62]
               [--gap:16] md:[--gap:10]
               order-3 flex flex-col
@@ -55,7 +63,9 @@ export function MoodSection() {
             </p>
           </div>
           {/* カレーの写真 */}
-          <div
+          <Parallax
+            offset={24}
+            scaleWithViewport
             className="
               [--w:200] md:[--w:235]
               [--top:0] md:[--top:0]
@@ -73,15 +83,15 @@ export function MoodSection() {
               alt="鉄鍋で提供されるカレー"
               width={680}
               height={1020}
-              className="h-[311.95%] w-full max-w-none mt-[-86.7%] object-cover"
+              className="aspect-[235/113] w-full object-cover object-[center_90%]"
               sizes="(min-width: 768px) 18vw, 51vw"
             />
-          </div>
+          </Parallax>
         </div>
         {/* カクテルのラインナップ・ご来店案内テキスト・マンゴヤンの写真 */}
         <div
           className="
-            [--top:48] md:[--top:0]
+            [--top:78] md:[--top:0]
             [--bottom:0] md:[--bottom:54]
             flex flex-col
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
@@ -90,11 +100,9 @@ export function MoodSection() {
           "
         >
           {/* カクテルのラインナップ写真 */}
-          <Image
-            src={asset("/main/mood/cocktail-lineup.jpg")}
-            alt="色とりどりのカクテルが並ぶバックバー"
-            width={1179}
-            height={734}
+          <Parallax
+            offset={32}
+            scaleWithViewport
             className="
               [--w:236] md:[--w:295]
               [--top:0] md:[--top:36]
@@ -103,14 +111,21 @@ export function MoodSection() {
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              aspect-[295/142] border border-[#cbb394]/60 object-cover
             "
-            sizes="(min-width: 768px) 23vw, 61vw"
-          />
+          >
+            <Image
+              src={asset("/main/mood/cocktail-lineup.jpg")}
+              alt="色とりどりのカクテルが並ぶバックバー"
+              width={1179}
+              height={734}
+              className="aspect-[295/142] w-full border border-[#cbb394]/60 object-cover"
+              sizes="(min-width: 768px) 23vw, 61vw"
+            />
+          </Parallax>
           {/* ご来店案内テキスト */}
           <div
             className="
-              [--top:40] md:[--top:258]
+              [--top:70] md:[--top:258]
               [--left:24] md:[--left:-78]
               [--gap:16] md:[--gap:10]
               flex flex-col
@@ -137,10 +152,12 @@ export function MoodSection() {
             </p>
           </div>
           {/* マンゴヤンの写真（メインビジュアルの一部を切り出し） */}
-          <div
+          <Parallax
+            offset={40}
+            scaleWithViewport
             className="
               [--w:200] md:[--w:241]
-              [--top:40] md:[--top:0]
+              [--top:70] md:[--top:0]
               [--left:100] md:[--left:44]
               grid shrink-0 overflow-hidden
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
@@ -157,12 +174,12 @@ export function MoodSection() {
               className="h-full w-[308.02%] max-w-none ml-[-90.08%]"
               sizes="(min-width: 768px) 19vw, 51vw"
             />
-          </div>
+          </Parallax>
         </div>
         {/* 縦書きの締めコピー */}
         <div
           className="
-            [--top:64]
+            [--top:94] md:[--top:64]
             [--left:0] md:[--left:317]
             [--gap:28] md:[--gap:36]
             [--bottom:0] md:[--bottom:174]

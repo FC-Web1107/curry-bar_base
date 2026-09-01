@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FadeIn } from "@/components/ui/fade-in";
 import { asset } from "@/lib/utils";
 
 const bodyParagraphClass =
@@ -7,29 +8,29 @@ const bodyParagraphClass =
 // 店内写真（SPの横流しとmd以上のレイアウトで共用）
 const floorPhotos = [
   {
-    src: "/main/floor/counter.png",
-    alt: "赤い間接照明に照らされたカウンター席",
-    width: 868,
-    height: 654,
-    spClass: "[--w:318] aspect-[371/217]",
-  },
-  {
     src: "/main/floor/interior-shelf.png",
-    alt: "ボトルや小物が並ぶ店内の棚",
+    alt: "オレンジの階段",
     width: 602,
     height: 814,
     spClass: "[--w:280] aspect-[327/182]",
   },
   {
-    src: "/main/floor/cabinet.png",
-    alt: "木漏れ日のような照明が当たるキャビネット",
-    width: 604,
-    height: 810,
-    spClass: "[--w:318] aspect-[381/254]",
+    src: "/main/floor/1.png",
+    alt: "ボトルや小物が並ぶ店内の棚",
+    width: 868,
+    height: 654,
+    spClass: "[--w:318] aspect-[371/217]",
   },
   {
-    src: "/main/floor/cabinet.png",
-    alt: "木漏れ日のような照明が当たるキャビネット",
+    src: "/main/floor/3.png",
+    alt: "カレーとワイン",
+    width: 742,
+    height: 750,
+    spClass: "[--w:318] aspect-[381/254] object-[center_92%]",
+  },
+  {
+    src: "/main/floor/2.png",
+    alt: "ボードゲームが置かれたテーブル席",
     width: 604,
     height: 810,
     spClass: "[--w:280] aspect-[333/222]",
@@ -139,10 +140,6 @@ export function FloorSection() {
                 肩の力を抜いて、自分らしい時間を過ごせる、
                 <br />
                 アットホームな夜の秘密基地です。
-                <br />
-                アクセス、ニュースはお任せします。
-                <br />
-                他に必要なことがあれば教えてください
               </p>
             </div>
           </div>
@@ -159,23 +156,23 @@ export function FloorSection() {
               md:flex md:shrink-0
             "
           >
-            <Image
-              src={asset(floorPhotos[0].src)}
-              alt={floorPhotos[0].alt}
-              width={floorPhotos[0].width}
-              height={floorPhotos[0].height}
+            <FadeIn
               className="
                 [--w:318] md:[--w:371]
                 w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-                aspect-[371/217] border border-[#cbb394]/60 object-cover
               "
-              sizes="(min-width: 768px) 29vw, 82vw"
-            />
-            <Image
-              src={asset(floorPhotos[1].src)}
-              alt={floorPhotos[1].alt}
-              width={floorPhotos[1].width}
-              height={floorPhotos[1].height}
+            >
+              <Image
+                src={asset(floorPhotos[0].src)}
+                alt={floorPhotos[0].alt}
+                width={floorPhotos[0].width}
+                height={floorPhotos[0].height}
+                className="aspect-[371/217] w-full border border-[#cbb394]/60 object-cover"
+                sizes="(min-width: 768px) 29vw, 82vw"
+              />
+            </FadeIn>
+            <FadeIn
+              delay={150}
               className="
                 [--w:280] md:[--w:327]
                 [--top:32] md:[--top:75]
@@ -184,11 +181,18 @@ export function FloorSection() {
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
                 ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
                 w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-                aspect-[327/182] border border-[#cbb394]/60 object-cover
                 md:self-start
               "
-              sizes="(min-width: 768px) 26vw, 72vw"
-            />
+            >
+              <Image
+                src={asset(floorPhotos[1].src)}
+                alt={floorPhotos[1].alt}
+                width={floorPhotos[1].width}
+                height={floorPhotos[1].height}
+                className="aspect-[327/182] w-full border border-[#cbb394]/60 object-cover"
+                sizes="(min-width: 768px) 26vw, 72vw"
+              />
+            </FadeIn>
           </div>
         </div>
         {/* SP: 店内写真を右から左へ流す（ホバー中は停止） */}
@@ -242,25 +246,26 @@ export function FloorSection() {
             md:flex md:flex-row md:items-start
           "
         >
-          <Image
-            src={asset(floorPhotos[2].src)}
-            alt={floorPhotos[2].alt}
-            width={floorPhotos[2].width}
-            height={floorPhotos[2].height}
+          <FadeIn
+            delay={300}
             className="
               [--w:318] md:[--w:381]
               [--left:24] md:[--left:107]
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              aspect-[381/254] border border-[#cbb394]/60 object-cover
             "
-            sizes="(min-width: 768px) 30vw, 82vw"
-          />
-          <Image
-            src={asset(floorPhotos[3].src)}
-            alt={floorPhotos[3].alt}
-            width={floorPhotos[3].width}
-            height={floorPhotos[3].height}
+          >
+            <Image
+              src={asset(floorPhotos[2].src)}
+              alt={floorPhotos[2].alt}
+              width={floorPhotos[2].width}
+              height={floorPhotos[2].height}
+              className="aspect-[381/254] w-full border border-[#cbb394]/60 object-cover object-[center_92%]"
+              sizes="(min-width: 768px) 30vw, 82vw"
+            />
+          </FadeIn>
+          <FadeIn
+            delay={450}
             className="
               [--w:280] md:[--w:333]
               [--top:32] md:[--top:111]
@@ -271,11 +276,18 @@ export function FloorSection() {
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
               mr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              aspect-[333/222] border border-[#cbb394]/60 object-cover
               md:self-start
             "
-            sizes="(min-width: 768px) 26vw, 72vw"
-          />
+          >
+            <Image
+              src={asset(floorPhotos[3].src)}
+              alt={floorPhotos[3].alt}
+              width={floorPhotos[3].width}
+              height={floorPhotos[3].height}
+              className="aspect-[333/222] w-full border border-[#cbb394]/60 object-cover"
+              sizes="(min-width: 768px) 26vw, 72vw"
+            />
+          </FadeIn>
         </div>
       </div>
     </section>

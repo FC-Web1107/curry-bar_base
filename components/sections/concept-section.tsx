@@ -178,7 +178,7 @@ export function ConceptSection() {
         {/* SP用：オリジナルカクテルの写真（テキストと重ねず下に表示） */}
         <div
           className="
-            [--top:40]
+            [--top:100]
             [--px:24]
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
             px-[min(calc(100vw*var(--px)/var(--base)),calc(var(--px)*1px))]

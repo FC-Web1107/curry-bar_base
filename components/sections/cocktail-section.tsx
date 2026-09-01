@@ -45,7 +45,7 @@ function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean
             alt=""
             width={item.image.width}
             height={item.image.height}
-            className="h-full w-full object-cover opacity-25"
+            className="aspect-[386/518] w-full object-cover opacity-25"
             sizes="(min-width: 768px) 30vw, 87vw"
           />
         </div>
