@@ -5,7 +5,8 @@ import "./globals.css";
 // Figma指定フォント（全テキスト共通）
 const zenOldMincho = Zen_Old_Mincho({
   subsets: ["latin"],
-  weight: ["400"],
+  // 400: サイト全体 / 600: カード内テキスト
+  weight: ["400", "600"],
   display: "swap",
   variable: "--font-zen-old-mincho",
 });

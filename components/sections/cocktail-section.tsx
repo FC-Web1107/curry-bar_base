@@ -45,7 +45,7 @@ function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean
             alt=""
             width={item.image.width}
             height={item.image.height}
-            className="aspect-[386/518] w-full object-cover opacity-25"
+            className="aspect-[386/518] w-full object-cover opacity-40"
             sizes="(min-width: 768px) 30vw, 87vw"
           />
         </div>
@@ -55,7 +55,8 @@ function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean
             [--px:28] md:[--px:34]
             col-start-1 row-start-1 flex flex-col items-center justify-center
             px-[min(calc(100vw*var(--px)/var(--base)),calc(var(--px)*1px))]
-            text-center
+            text-center font-semibold
+            [text-shadow:0_1px_4px_rgba(13,11,9,0.9)]
           "
         >
           <p
@@ -72,7 +73,6 @@ function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean
               [--fs:28] md:[--fs:34]
               [--top:14] md:[--top:16]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              font-normal
               text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
               leading-[1.15] md:whitespace-nowrap
             "
@@ -94,7 +94,7 @@ function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean
             className="
               [--top:10] md:[--top:12]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              text-[15px] leading-[1.6] tracking-[0.2em] text-[#cbb394] [--fs:20] md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+              text-[14px] leading-[1.6] tracking-[0.2em] text-[#cbb394] [--fs:20] md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
             "
           >
             {item.subtitle}
@@ -104,24 +104,29 @@ function MenuCard({ index, stacked = false }: { index: number; stacked?: boolean
             className="
               [--top:20] md:[--top:24]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              text-left text-[13px] leading-[1.9] tracking-[0.04em] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+              text-left text-[14px] leading-[1.9] tracking-[0.04em] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
             "
           >
             {item.description}
           </p>
+          {/* 詳細ページへのボタン */}
           <span
             className="
               [--fs:16] md:[--fs:20]
               [--top:24] md:[--top:30]
               [--gap:14] md:[--gap:18]
-              flex items-center
+              [--px:24] [--py:12]
+              flex items-center justify-center
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              px-[min(calc(100vw*var(--px)/var(--base)),calc(var(--px)*1px))]
+              py-[min(calc(100vw*var(--py)/var(--base)),calc(var(--py)*1px))]
+              rounded-full border border-[#cbb394]/70 bg-white/15 text-[#cbb394] backdrop-blur-[6px]
               text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[1.5]
+              leading-[1.5] tracking-[0.06em]
             "
           >
-            more
+            {item.linkLabel}
             <ChevronRight className="h-[6.5px] w-[5.5px]" />
           </span>
         </div>
@@ -153,14 +158,14 @@ export function CocktailSection() {
           <span
             aria-hidden="true"
             className="
-              [--w:70] md:[--w:251]
+              [--w:44] md:[--w:251]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
               h-px bg-white
             "
           />
           <h2
             className="
-              [--fs:20] md:[--fs:22]
+              [--fs:29] md:[--fs:32]
               shrink-0
               text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
               font-normal leading-[1.5]
@@ -171,7 +176,7 @@ export function CocktailSection() {
           <span
             aria-hidden="true"
             className="
-              [--w:70] md:[--w:251]
+              [--w:44] md:[--w:251]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
               h-px bg-white
             "

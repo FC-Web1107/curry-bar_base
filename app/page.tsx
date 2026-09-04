@@ -15,6 +15,9 @@ export default function Home() {
     <>
       <SiteHeader />
       <main>
+        {/* ページ最上部のアンカー。
+            FVはstickyでビューポート内に留まり続けるため、#homeのリンク先にできない */}
+        <div id="home" aria-hidden="true" />
         {/* FVは背景として固定し、後続セクションが上に重なって競り上がる。
             固定はロゴ・ナビが画面トップに達してから始める（FV下部のボタンを見せるため） */}
         <div

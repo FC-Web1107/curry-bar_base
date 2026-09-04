@@ -12,30 +12,34 @@ const floorPhotos = [
     alt: "オレンジの階段",
     width: 602,
     height: 814,
-    spClass: "[--w:280] aspect-[327/182]",
   },
   {
     src: "/main/floor/1.png",
     alt: "ボトルや小物が並ぶ店内の棚",
     width: 868,
     height: 654,
-    spClass: "[--w:318] aspect-[371/217]",
   },
   {
     src: "/main/floor/3.png",
     alt: "カレーとワイン",
     width: 742,
     height: 750,
-    spClass: "[--w:318] aspect-[381/254] object-[center_92%]",
+    // この写真だけ見せたい位置が下寄り
+    objectPositionClass: "object-[center_92%]",
   },
   {
     src: "/main/floor/2.png",
     alt: "ボードゲームが置かれたテーブル席",
     width: 604,
     height: 810,
-    spClass: "[--w:280] aspect-[333/222]",
   },
 ];
+
+// SPの横流しは4枚とも一番大きい写真（381×254）に合わせて表示する
+const spPhotoWidthClass =
+  "[--w:318] w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]";
+const spPhotoImageClass =
+  "aspect-[381/254] w-full border border-[#cbb394]/60 object-cover";
 
 export function FloorSection() {
   return (
@@ -217,7 +221,7 @@ export function FloorSection() {
           >
             {[0, 1].map((copy) =>
               floorPhotos.map((photo, index) => (
-                <li key={`${copy}-${index}`} className="shrink-0">
+                <li key={`${copy}-${index}`} className={`shrink-0 ${spPhotoWidthClass}`}>
                   <Image
                     src={asset(photo.src)}
                     // 2組目は読み上げ不要
@@ -225,11 +229,7 @@ export function FloorSection() {
                     aria-hidden={copy === 1}
                     width={photo.width}
                     height={photo.height}
-                    className={`
-                      w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-                      border border-[#cbb394]/60 object-cover
-                      ${photo.spClass}
-                    `}
+                    className={`${spPhotoImageClass} ${photo.objectPositionClass ?? ""}`}
                     sizes="82vw"
                   />
                 </li>

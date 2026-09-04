@@ -5,6 +5,8 @@ export type MenuItem = {
   title: string;
   subtitle: string;
   description: string;
+  /** カードのボタン文言 */
+  linkLabel: string;
   image: {
     src: string;
     alt: string;
@@ -16,6 +18,7 @@ export type MenuItem = {
 export const menuItems: MenuItem[] = [
   {
     slug: "curry",
+    linkLabel: "カレーを見る",
     no: "01",
     title: "CURRY",
     subtitle: "Baseのカレー",
@@ -30,6 +33,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     slug: "story-cocktail",
+    linkLabel: "物語を選ぶ",
     no: "02",
     title: "STORY COCKTAIL",
     subtitle: "物語カクテル",
@@ -44,6 +48,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     slug: "bar-selection",
+    linkLabel: "ドリンクを見る",
     no: "03",
     title: "BAR SELECTION",
     subtitle: "豊富なお酒とカクテル",
@@ -58,6 +63,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     slug: "gacha-bingo",
+    linkLabel: "ガチャで遊ぶ",
     no: "04",
     title: "GACHA BINGO",
     subtitle: "カクテルガシャビンゴ",
@@ -72,6 +78,7 @@ export const menuItems: MenuItem[] = [
   },
   {
     slug: "non-alcohol",
+    linkLabel: "ノンアルを見る",
     no: "05",
     title: "NON-ALCOHOL",
     subtitle: "ノンアルカクテル",

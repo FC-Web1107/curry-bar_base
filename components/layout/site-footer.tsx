@@ -1,20 +1,13 @@
 import Link from "next/link";
+import { navItems } from "@/lib/nav-items";
 import { asset } from "@/lib/utils";
-
-const footerNavItems = [
-  { label: "Home", href: "#home" },
-  { label: "How to", href: "#how-to" },
-  { label: "Cocktail", href: "#cocktail" },
-  { label: "Floor", href: "#floor" },
-  { label: "Map", href: "#map" },
-];
 
 export function SiteFooter() {
   return (
     <footer
       className="[--base:390] md:[--base:1280] w-full bg-cover bg-bottom" style={{ backgroundImage: `url('${asset("/main/common/texture-bg.png")}')` }}
     >
-      {/* フッターナビ */}
+      {/* フッターナビ（項目の間は縦の境界線で区切る） */}
       <nav
         className="
           [--h:66] md:[--h:77]
@@ -23,23 +16,33 @@ export function SiteFooter() {
       >
         <ul
           className="
-            [--gap:16] md:[--gap:18]
+            [--gap:8] md:[--gap:12]
             flex h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
             flex-wrap items-center justify-center
             gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
           "
         >
-          {footerNavItems.map((item) => (
-            <li key={item.label}>
+          {navItems.map((item, index) => (
+            <li
+              key={item.en}
+              className="
+                flex items-center
+                gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              "
+            >
+              {index > 0 && (
+                <span aria-hidden="true" className="h-[1.2em] w-px bg-current opacity-40" />
+              )}
               <Link
                 href={item.href}
                 className="
                   [--fs:16] md:[--fs:20]
+                  whitespace-nowrap
                   text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
                   leading-[1.5]
                 "
               >
-                {item.label}
+                {item.en}
               </Link>
             </li>
           ))}

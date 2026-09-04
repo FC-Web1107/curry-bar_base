@@ -99,25 +99,33 @@ export function FvNav() {
             />
           ))}
         </button>
+        {/* 項目の間は横の境界線で区切る */}
         <nav className="flex grow items-center justify-center">
           <ul
             className="
-              [--gap:28]
+              [--gap:20] [--w:180]
               flex flex-col items-center
               gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
             "
           >
-            {navItems.map((item) => (
-              <li key={item.en}>
+            {navItems.map((item, index) => (
+              <li
+                key={item.en}
+                className="
+                  flex w-full flex-col items-center
+                  gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+                "
+              >
+                {index > 0 && (
+                  <span aria-hidden="true" className="h-px w-full bg-current opacity-40" />
+                )}
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
                   tabIndex={open ? 0 : -1}
                   className="
                     [--fs:20]
-                    [--gap:8]
-                    flex items-baseline
-                    gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
                     text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
                     leading-[1.5]
                   "
@@ -141,21 +149,28 @@ export function FvNav() {
       >
         <ul
           className="
-            [--gap:20] md:[--gap:28]
-            flex flex-wrap items-baseline
+            [--gap:10] md:[--gap:14]
+            flex flex-wrap items-center
             gap-x-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
             gap-y-2
           "
         >
-          {navItems.map((item) => (
-            <li key={item.en}>
+          {navItems.map((item, index) => (
+            <li
+              key={item.en}
+              className="
+                flex items-center
+                gap-x-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              "
+            >
+              {index > 0 && (
+                <span aria-hidden="true" className="h-[1.2em] w-px bg-current opacity-40" />
+              )}
               <Link
                 href={item.href}
                 className="
                   [--fs:16] md:[--fs:20]
-                  [--gap:8] md:[--gap:12]
-                  flex items-baseline
-                  gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+                  whitespace-nowrap
                   text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
                   leading-[1.5]
                 "

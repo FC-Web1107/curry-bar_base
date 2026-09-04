@@ -54,7 +54,7 @@ export function SiteHeader() {
       className={`
         [--base:390] md:[--base:1280]
         [--h:56] md:[--h:72]
-        [--px:20] md:[--px:75]
+        [--px:12] md:[--px:75]
         fixed inset-x-0 top-0 z-50
         flex items-center justify-center
         h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
@@ -62,6 +62,8 @@ export function SiteHeader() {
         transition-[transform,opacity,visibility] duration-300 ease-out
         motion-reduce:transition-none
         md:justify-start
+        md:border-[#cbb394]/40 md:bg-[#101010]/95 md:backdrop-blur-[12px]
+        md:shadow-[0_2px_16px_rgba(0,0,0,0.55)]
         ${visible ? "visible translate-y-0 opacity-100" : "invisible -translate-y-full opacity-0"}
       `}
     >
@@ -85,17 +87,26 @@ export function SiteHeader() {
         >
           Curry&amp;Bar Base
         </Link>
-        {/* グローバルナビ */}
+        {/* グローバルナビ（項目の間は縦の境界線で区切る） */}
         <nav>
           <ul
             className="
-              [--gap:16] md:[--gap:28]
-              flex items-baseline
+              [--gap:8] md:[--gap:14]
+              flex items-center
               gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
             "
           >
-            {navItems.map((item) => (
-              <li key={item.en}>
+            {navItems.map((item, index) => (
+              <li
+                key={item.en}
+                className="
+                  flex items-center
+                  gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+                "
+              >
+                {index > 0 && (
+                  <span aria-hidden="true" className="h-[1.2em] w-px bg-current opacity-40" />
+                )}
                 <Link
                   href={item.href}
                   className="

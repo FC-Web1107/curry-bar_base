@@ -24,7 +24,7 @@ export function MoodSection() {
             scaleWithViewport
             className="
               [--w:240] md:[--w:287]
-              [--top:30] md:[--top:36]
+              [--top:64] md:[--top:36]
               [--left:24] md:[--left:121]
               order-2
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
@@ -67,14 +67,15 @@ export function MoodSection() {
             offset={24}
             scaleWithViewport
             className="
-              [--w:200] md:[--w:235]
+              [--w:240] md:[--w:235]
               [--top:0] md:[--top:0]
-              [--left:120] md:[--left:173]
+              [--left:39] md:[--left:173]
               order-1 grid overflow-hidden
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              aspect-[235/113] border border-[#cbb394]/60
+              aspect-[240/145] border border-[#cbb394]/60
+              md:aspect-[235/143]
               md:order-3
             "
           >
@@ -83,8 +84,8 @@ export function MoodSection() {
               alt="鉄鍋で提供されるカレー"
               width={680}
               height={1020}
-              className="aspect-[235/113] w-full object-cover object-[center_90%]"
-              sizes="(min-width: 768px) 18vw, 51vw"
+              className="aspect-[240/145] w-full object-cover object-[center_90%] md:aspect-[235/143]"
+              sizes="(min-width: 768px) 18vw, 62vw"
             />
           </Parallax>
         </div>
