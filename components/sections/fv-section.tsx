@@ -37,15 +37,16 @@ const ctaButtons = [
 
 export function FvSection() {
   return (
-    <section className="[--base:390] md:[--base:1280] grid w-full">
-      {/* メインビジュアル（左右反転して、明るい階段側を右端に置く） */}
+    <section className="[--base:390] md:[--base:1280] grid w-full grid-cols-[minmax(0,1fr)]">
+      {/* メインビジュアル（左右反転して、明るい階段側を右端に置く）
+          高さはコンテンツ側に合わせる（h-0 min-h-full で画像の固有高さがセクションを押し広げないようにする） */}
       <div className="relative z-0 col-start-1 row-start-1 grid overflow-hidden">
         <Image
           src={asset("/main/fv/main-visual.png")}
           alt="オレンジ色の螺旋階段がある地下の店内"
           width={1179}
           height={756}
-          className="col-start-1 row-start-1 h-full w-full scale-x-[-1] object-cover object-[92%_center] md:aspect-[1280/710] md:object-center"
+          className="col-start-1 row-start-1 h-0 min-h-full w-full scale-x-[-1] object-cover object-[92%_center] md:object-center"
           sizes="100vw"
           priority
         />
@@ -55,14 +56,17 @@ export function FvSection() {
           className="relative z-10 col-start-1 row-start-1 bg-[linear-gradient(to_right,rgba(0,0,0,0.92)_0%,rgba(0,0,0,0.88)_45%,rgba(0,0,0,0.6)_65%,rgba(0,0,0,0.15)_85%,rgba(0,0,0,0)_100%)] md:bg-[linear-gradient(to_right,rgba(0,0,0,1)_9.7%,rgba(0,0,0,0)_82.3%)]"
         />
       </div>
-      {/* FVコンテンツ */}
+      {/* FVコンテンツ。
+          フルブリードのヒーローとして、1280px超でも左端75pxにテキスト・右端75pxにナビを置く
+          （中央寄せの max-w-[1280px] にすると広い画面でテキストが右に寄って見えるため）。
+          各要素のサイズは固定なので、行が広がっても要素自体は拡大しない */}
       <div
         className="
           [--px:20] md:[--px:75]
           [--top:24] md:[--top:58]
           [--bottom:48] md:[--bottom:64]
           relative z-20 col-start-1 row-start-1
-          mx-auto flex w-full max-w-[1280px] flex-col
+          flex w-full flex-col
           px-[min(calc(100vw*var(--px)/var(--base)),calc(var(--px)*1px))]
           pt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
           pb-[min(calc(100vw*var(--bottom)/var(--base)),calc(var(--bottom)*1px))]

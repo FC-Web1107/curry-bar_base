@@ -16,7 +16,7 @@ export function HowToSection() {
   return (
     <section id="how-to" className="[--base:390] md:[--base:1280] w-full">
       {/* ウイスキー棚の写真（強めのパララックス） */}
-      <div className="grid w-full overflow-hidden aspect-[390/300] md:aspect-[1280/604]">
+      <div className="grid w-full overflow-hidden aspect-[390/300] md:aspect-[1280/604] md:max-h-[604px]">
         <Parallax
           offset={160}
           scaleWithViewport
@@ -30,7 +30,7 @@ export function HowToSection() {
             className="
               [--h:510] md:[--h:1027]
               w-full max-w-none shrink-0 object-cover
-              h-[calc(100vw*var(--h)/var(--base))]
+              h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
             "
             sizes="100vw"
           />

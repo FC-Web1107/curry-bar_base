@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { MobileMenu } from "@/components/layout/mobile-menu";
+import { ReservationButton } from "@/components/ui/reservation-button";
 import { navItems } from "@/lib/nav-items";
 
 /** スクロールが止まったと判定するまでの時間（ms） */
@@ -12,6 +14,7 @@ const SCROLL_STOP_DELAY = 150;
  * - FVの固定表示が終わり、後続セクションが画面トップに達してから追従を開始する
  * - スクロール中は隠し、スクロールが止まったら表示する
  * - SHOP INFORMATIONが見え始めたら追従を終了する
+ * - SPは予約ボタン＋ハンバーガー、md以上はロゴ＋ナビ＋予約ボタン
  */
 export function SiteHeader() {
   const [visible, setVisible] = useState(false);
@@ -54,7 +57,7 @@ export function SiteHeader() {
       className={`
         [--base:390] md:[--base:1280]
         [--h:56] md:[--h:72]
-        [--px:12] md:[--px:75]
+        [--px:20] md:[--px:75]
         fixed inset-x-0 top-0 z-50
         flex items-center justify-center
         h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
@@ -69,12 +72,14 @@ export function SiteHeader() {
     >
       <div
         className="
-          mx-auto flex w-full max-w-[1280px] items-center justify-center
+          mx-auto flex w-full max-w-[1280px] items-center justify-between
           px-[min(calc(100vw*var(--px)/var(--base)),calc(var(--px)*1px))]
-          md:justify-between
         "
       >
-        {/* ロゴ（SPはナビのみ表示） */}
+        {/* SP: 予約ボタン＋ハンバーガー */}
+        <ReservationButton variant="glass" className="md:hidden" />
+        <MobileMenu />
+        {/* ロゴ（md以上） */}
         <Link
           href="#home"
           className="
@@ -87,42 +92,52 @@ export function SiteHeader() {
         >
           Curry&amp;Bar Base
         </Link>
-        {/* グローバルナビ（項目の間は縦の境界線で区切る） */}
-        <nav>
-          <ul
-            className="
-              [--gap:8] md:[--gap:14]
-              flex items-center
-              gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
-            "
-          >
-            {navItems.map((item, index) => (
-              <li
-                key={item.en}
-                className="
-                  flex items-center
-                  gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
-                "
-              >
-                {index > 0 && (
-                  <span aria-hidden="true" className="h-[1.2em] w-px bg-current opacity-40" />
-                )}
-                <Link
-                  href={item.href}
+        {/* md以上: グローバルナビ・予約ボタン */}
+        <div
+          className="
+            md:[--gap:28]
+            hidden items-center
+            md:flex md:gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+          "
+        >
+          {/* グローバルナビ（項目の間は縦の境界線で区切る） */}
+          <nav>
+            <ul
+              className="
+                [--gap:8] md:[--gap:14]
+                flex items-center
+                gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              "
+            >
+              {navItems.map((item, index) => (
+                <li
+                  key={item.en}
                   className="
-                    [--fs:16] md:[--fs:20]
-                    whitespace-nowrap
-                    text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-                    md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-                    leading-[1.5]
+                    flex items-center
+                    gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
                   "
                 >
-                  {item.en}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                  {index > 0 && (
+                    <span aria-hidden="true" className="h-[1.2em] w-px bg-current opacity-40" />
+                  )}
+                  <Link
+                    href={item.href}
+                    className="
+                      [--fs:16] md:[--fs:20]
+                      whitespace-nowrap
+                      text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                      md:text-[min(calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                      leading-[1.5]
+                    "
+                  >
+                    {item.en}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <ReservationButton variant="glass" />
+        </div>
       </div>
     </header>
   );

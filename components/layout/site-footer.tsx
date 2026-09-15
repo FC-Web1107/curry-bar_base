@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ReservationButton } from "@/components/ui/reservation-button";
 import { navItems } from "@/lib/nav-items";
 import { asset } from "@/lib/utils";
 
@@ -48,6 +49,16 @@ export function SiteFooter() {
           ))}
         </ul>
       </nav>
+      {/* 予約サイトへ */}
+      <div
+        className="
+          [--top:24] md:[--top:32]
+          flex justify-center
+          pt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+        "
+      >
+        <ReservationButton />
+      </div>
       {/* コピーライト */}
       <p
         className="
