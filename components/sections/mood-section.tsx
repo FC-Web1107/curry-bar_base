@@ -2,219 +2,227 @@ import Image from "next/image";
 import { Parallax } from "@/components/ui/parallax";
 import { asset } from "@/lib/utils";
 
+// SPデザイン（幅375px）を基準に実装。
+// PC・タブレットは全要素を同一セルに重ね、margin で配置する（absolute不使用）
 export function MoodSection() {
   return (
     <section
       id="mood"
       className="
-        [--base:390] md:[--base:1280]
-        [--py:80] md:[--py:76]
-        [--pb:50] md:[--pb:0]
+        [--base:375] md:[--base:1280]
+        [--py:32] md:[--py:0]
+        [--pb:76] md:[--pb:96]
         w-full
         pt-[min(calc(100vw*var(--py)/var(--base)),calc(var(--py)*1px))]
         pb-[min(calc(100vw*var(--pb)/var(--base)),calc(var(--pb)*1px))]
       "
     >
-      <div className="mx-auto w-full max-w-[1280px]">
-        {/* 青いカクテル・空気感テキスト・カレーの写真 */}
-        <div className="flex flex-col md:flex-row md:items-start">
-          {/* 青いカクテルの写真 */}
-          <Parallax
-            offset={40}
-            scaleWithViewport
-            className="
-              [--w:240] md:[--w:287]
-              [--top:64] md:[--top:36]
-              [--left:24] md:[--left:121]
-              order-2
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              md:order-2
-            "
-          >
-            <Image
-              src={asset("/main/mood/blue-cocktail.png")}
-              alt="カウンターに置かれた青いカクテル"
-              width={816}
-              height={1020}
-              className="aspect-[287/294] w-full border border-[#cbb394]/60 object-cover"
-              sizes="(min-width: 768px) 22vw, 62vw"
-            />
-          </Parallax>
-          {/* 空気感テキスト */}
-          <div
-            className="
-              [--top:70] md:[--top:150]
-              [--left:24] md:[--left:62]
-              [--gap:16] md:[--gap:10]
-              order-3 flex flex-col
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
-            "
-          >
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
-              店内に流れるのは、
-              <br />
-              落ち着いた音楽と、
-              <br />
-              ほどよく近い、人との距離。
-            </p>
-          </div>
-          {/* カレーの写真 */}
-          <Parallax
-            offset={24}
-            scaleWithViewport
-            className="
-              [--w:240] md:[--w:235]
-              [--top:0] md:[--top:0]
-              [--left:39] md:[--left:173]
-              order-1 grid overflow-hidden
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              aspect-[240/145] border border-[#cbb394]/60
-              md:aspect-[235/143]
-              md:order-3
-            "
-          >
-            <Image
-              src={asset("/main/mood/curry.jpg")}
-              alt="鉄鍋で提供されるカレー"
-              width={680}
-              height={1020}
-              className="aspect-[240/145] w-full object-cover object-[center_90%] md:aspect-[235/143]"
-              sizes="(min-width: 768px) 18vw, 62vw"
-            />
-          </Parallax>
-        </div>
-        {/* カクテルのラインナップ・ご来店案内テキスト・マンゴヤンの写真 */}
-        <div
+      {/* SPは row-start で行を分け、PCは md:row-start-1 で全要素を同一セルに重ねる */}
+      <div className="mx-auto grid w-full max-w-[1280px]">
+        {/* 青いカクテルの写真（右端に寄せる） */}
+        <Parallax
+          offset={40}
+          scaleWithViewport
           className="
-            [--top:78] md:[--top:0]
-            [--bottom:0] md:[--bottom:54]
-            flex flex-col
+            [--w:190] md:[--w:364]
+            [--top:0] md:[--top:15]
+            [--right:0] md:[--right:76]
+            col-start-1 row-start-1 self-start justify-self-end
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-            md:mt-[calc(min(calc(100vw*var(--bottom)/var(--base)),calc(var(--bottom)*1px))*-1)]
-            md:flex-row md:items-start
+            mr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
+            w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
           "
         >
-          {/* カクテルのラインナップ写真 */}
-          <Parallax
-            offset={32}
-            scaleWithViewport
-            className="
-              [--w:236] md:[--w:295]
-              [--top:0] md:[--top:36]
-              [--left:80] md:[--left:470]
-              shrink-0
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-            "
-          >
-            <Image
-              src={asset("/main/mood/cocktail-lineup.jpg")}
-              alt="色とりどりのカクテルが並ぶバックバー"
-              width={1179}
-              height={734}
-              className="aspect-[295/142] w-full border border-[#cbb394]/60 object-cover"
-              sizes="(min-width: 768px) 23vw, 61vw"
-            />
-          </Parallax>
-          {/* ご来店案内テキスト */}
-          <div
-            className="
-              [--top:70] md:[--top:258]
-              [--left:24] md:[--left:-78]
-              [--gap:16] md:[--gap:10]
-              flex flex-col
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
-            "
-          >
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
-              バーが初めての方も、
-              <br />
-              お一人でのご来店も大歓迎です。
-            </p>
-            <p className="[--fs:18] md:[--fs:20] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.9] md:leading-[1.8]">
-              その日の気分に寄り添う一杯を、
-              <br />
-              一緒に見つけます。
-              <br />
-              仕事帰りの一人飲み、
-              <br />
-              デートや友人との時間、
-              <br />
-              飲み終わりの締めカレーにも。
-            </p>
-          </div>
-          {/* マンゴヤンの写真（メインビジュアルの一部を切り出し） */}
-          <Parallax
-            offset={40}
-            scaleWithViewport
-            className="
-              [--w:200] md:[--w:241]
-              [--top:70] md:[--top:0]
-              [--left:100] md:[--left:44]
-              grid shrink-0 overflow-hidden
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              aspect-[241/476] border border-[#cbb394]/60
-            "
-          >
-            <Image
-              src={asset("/main/fv/main-visual.jpg")}
-              alt="ランプに照らされたマンゴヤンのボトル"
-              width={1179}
-              height={756}
-              className="h-full w-[308.02%] max-w-none ml-[-90.08%]"
-              sizes="(min-width: 768px) 19vw, 51vw"
-            />
-          </Parallax>
-        </div>
-        {/* 縦書きの締めコピー */}
-        <div
+          <Image
+            src={asset("/main/mood/blue-cocktail.png")}
+            alt="カウンターに置かれた青いカクテル"
+            width={816}
+            height={1020}
+            className="aspect-[190/195] w-full object-cover"
+            sizes="(min-width: 768px) 28vw, 51vw"
+          />
+        </Parallax>
+        {/* カレーの写真（SPは青いカクテルに重ねる） */}
+        <Parallax
+          offset={24}
+          scaleWithViewport
           className="
-            [--top:94] md:[--top:64]
-            [--left:0] md:[--left:317]
-            [--gap:28] md:[--gap:36]
-            [--bottom:0] md:[--bottom:174]
-            relative z-10 flex flex-row-reverse justify-center
+            [--w:176] md:[--w:366]
+            [--top:130] md:[--top:234]
+            [--left:40] md:[--left:66]
+            grid col-start-1 row-start-1 self-start justify-self-start
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-            md:mt-[calc(min(calc(100vw*82/1280),82px)*-1)]
             ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-            mb-[calc(min(calc(100vw*var(--bottom)/var(--base)),calc(var(--bottom)*1px))*-1)]
-            gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
-            md:justify-end
+            w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
           "
         >
-          <p
-            className="
-              [--fs:20] md:[--fs:42]
-              [writing-mode:vertical-rl]
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[1.38] tracking-[0.19em] text-[#cbb394]
-            "
-          >
-            いつでも、どなたとでも、
+          <Image
+            src={asset("/main/mood/curry-plate.webp")}
+            alt="唐揚げと目玉焼きがのったカレー"
+            width={1200}
+            height={800}
+            className="col-start-1 row-start-1 aspect-[176/117] w-full object-cover"
+            sizes="(min-width: 768px) 29vw, 47vw"
+          />
+          {/* 20%の黒オーバーレイ（同一セルで重ねる） */}
+          <span aria-hidden="true" className="col-start-1 row-start-1 bg-black/20" />
+        </Parallax>
+        {/* 空気感テキスト */}
+        <p
+          className="
+            [--fs:16] md:[--fs:25]
+            [--top:77] md:[--top:114]
+            [--left:53] md:[--left:371]
+            relative z-10 col-start-1 row-start-2
+            mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+            ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+            text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+            leading-[1.25]
+            md:row-start-1 md:self-start md:justify-self-start
+          "
+        >
+          店内に流れるのは、
+          <br />
+          落ち着いた音楽と、
+          <br />
+          ほどよく近い、人との距離。
+        </p>
+        {/* カウンターで乾杯する写真 */}
+        <Parallax
+          offset={32}
+          scaleWithViewport
+          className="
+            [--w:273] md:[--w:407]
+            [--top:55] md:[--top:670]
+            [--left:2] md:[--left:555]
+            grid col-start-1 row-start-3
+            mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+            ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+            w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
+            md:row-start-1 md:self-start md:justify-self-start
+          "
+        >
+          <Image
+            src={asset("/main/mood/bar-counter.webp")}
+            alt="カウンターでグラスを傾けながらカレーを楽しむ二人"
+            width={1200}
+            height={800}
+            className="col-start-1 row-start-1 aspect-[273/196] w-full object-cover object-right"
+            sizes="(min-width: 768px) 32vw, 73vw"
+          />
+          {/* 20%の黒オーバーレイ（同一セルで重ねる） */}
+          <span aria-hidden="true" className="col-start-1 row-start-1 bg-black/20" />
+        </Parallax>
+        {/* ご来店案内テキスト（SPは右寄せ、PCは左寄せ） */}
+        <div
+          className="
+            [--top:50] md:[--top:400]
+            [--right:39] md:[--right:0]
+            [--left:0] md:[--left:661]
+            [--gap:10] md:[--gap:10]
+            relative z-10 col-start-1 row-start-4 flex flex-col text-right
+            mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+            ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+            pr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
+            gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+            md:row-start-1 md:self-start md:justify-self-start md:text-left
+          "
+        >
+          <p className="[--fs:16] md:[--fs:25] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
+            バーが初めての方も、
+            <br />
+            お一人でのご来店も大歓迎です。
           </p>
-          <p
+          <p className="[--fs:16] md:[--fs:25] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
+            その日の気分に寄り添う一杯を、
+            <br />
+            一緒に見つけます。
+            <br />
+            仕事帰りの一人飲み、
+            <br />
+            デートや友人との時間、
+            <br />
+            飲み終わりの締めカレーにも。
+          </p>
+        </div>
+        {/* ワイングラスとボトルの写真（SPのみ） */}
+        <Parallax
+          offset={40}
+          scaleWithViewport
+          className="
+            [--w:155]
+            [--top:62]
+            [--left:33]
+            grid col-start-1 row-start-5
+            mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+            ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+            w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
+            md:hidden
+          "
+        >
+          <Image
+            src={asset("/main/mood/wine-glass.webp")}
+            alt="ボトルが並ぶカウンターに置かれたワイングラス"
+            width={800}
+            height={1200}
+            className="col-start-1 row-start-1 aspect-[155/202] w-full object-cover object-top"
+            sizes="41vw"
+          />
+          {/* 20%の黒オーバーレイ（同一セルで重ねる） */}
+          <span aria-hidden="true" className="col-start-1 row-start-1 bg-black/20" />
+        </Parallax>
+        {/* 右端の縦の飾り線。高さ0の箱からはみ出させ、レイアウトの高さに影響させない */}
+        <div aria-hidden="true" className="col-start-1 row-start-2 h-0 md:row-start-1">
+          <span
             className="
-              [--fs:20] md:[--fs:42]
-              [--top:44] md:[--top:63]
-              [writing-mode:vertical-rl] [text-orientation:upright]
+              [--h:776] md:[--h:517]
+              [--top:0] md:[--top:239]
+              [--right:27] md:[--right:41]
+              ml-auto block
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[0.96] tracking-[-0.02em] text-[#cbb394]
+              mr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
+              h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
+              w-px bg-white
+            "
+          />
+        </div>
+        {/* 縦書きの締めコピー。PCは高さ0の箱からはみ出させ、次のセクション（ウイスキー棚）に重ねる */}
+        <div className="col-start-1 row-start-6 md:row-start-1 md:h-0">
+          <div
+            className="
+              [--top:102] md:[--top:717]
+              [--left:0] md:[--left:314]
+              [--gap:27] md:[--gap:24]
+              flex flex-row-reverse justify-center
+              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+              gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              md:relative md:z-10 md:justify-end
             "
           >
-            気軽にBaseへお越しください。
-          </p>
+            <p
+              className="
+                [--fs:26] md:[--fs:30]
+                [writing-mode:vertical-rl]
+                text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                leading-[1.38] tracking-[0.19em] text-white
+              "
+            >
+              いつでも　どなたとでも
+            </p>
+            <p
+              className="
+                [--fs:26] md:[--fs:30]
+                [--top:96] md:[--top:56]
+                [writing-mode:vertical-rl] [text-orientation:upright]
+                mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+                text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                leading-[0.96] tracking-[0.05em] text-white
+              "
+            >
+              気軽にBaseへお越しください
+            </p>
+          </div>
         </div>
       </div>
     </section>

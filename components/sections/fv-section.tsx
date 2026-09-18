@@ -118,7 +118,7 @@ export function FvSection() {
                 whitespace-nowrap text-[13px] leading-[1.6] tracking-[0.06em] text-[#cbb394] md:tracking-[0.14em] [--fs:18] md:text-[clamp(min(14px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
               "
             >
-              OPEN 19:00 — 3:00 / CURRY & COCKTAIL
+              OPEN 19:00 — 3:00
             </p>
           </div>
           <FvNav />
