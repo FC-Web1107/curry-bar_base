@@ -182,7 +182,7 @@ export function ConceptSection() {
             >
               家でもなく、職場でもない。
               <br />
-              いつもの夜から少し離れて、
+              いつもの夜から少し離れて
               <br />
               自分の時間を取り戻せる場所。
             </p>
@@ -201,9 +201,9 @@ export function ConceptSection() {
             >
               鹿児島・天文館の地下にある
               <br />
-              「CURRY & BAR BASE」は、
+              「CURRY & BAR BASE」は
               <br />
-              カレーとカクテル、
+              カレーとカクテル
               <br />
               そして会話を楽しむための
               <br />

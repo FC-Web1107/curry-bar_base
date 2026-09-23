@@ -81,9 +81,9 @@ export function MoodSection() {
             md:row-start-1 md:self-start md:justify-self-start
           "
         >
-          店内に流れるのは、
+          店内に流れるのは
           <br />
-          落ち着いた音楽と、
+          落ち着いた音楽と
           <br />
           ほどよく近い、人との距離。
         </p>
@@ -129,18 +129,18 @@ export function MoodSection() {
           "
         >
           <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
-            バーが初めての方も、
+            バーが初めての方も
             <br />
             お一人でのご来店も大歓迎です。
           </p>
           <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
-            その日の気分に寄り添う一杯を、
+            その日の気分に寄り添う一杯を
             <br />
             一緒に見つけます。
             <br />
-            仕事帰りの一人飲み、
+            仕事帰りの一人飲み
             <br />
-            デートや友人との時間、
+            デートや友人との時間
             <br />
             飲み終わりの締めカレーにも。
           </p>
