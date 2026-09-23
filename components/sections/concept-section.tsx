@@ -10,8 +10,10 @@ export function ConceptSection() {
       className="
         [--base:375] md:[--base:1280]
         [--py:39] md:[--py:105]
+        [--pb:0] md:[--pb:48]
         w-full
         pt-[min(calc(100vw*var(--py)/var(--base)),calc(var(--py)*1px))]
+        pb-[min(calc(100vw*var(--pb)/var(--base)),calc(var(--pb)*1px))]
       "
     >
       <div className="mx-auto w-full max-w-[1280px]">
@@ -150,53 +152,64 @@ export function ConceptSection() {
               sizes="(min-width: 768px) 74vw, 74vw"
             />
           </div>
-          {/* 導入文（SPは右寄せ、PCは左寄せで右側に配置） */}
-          <p
+          {/* 導入文・店の説明。
+              SPは contents で各段落をそのままグリッドの行に流し（写真を挟んだ従来の並び）、
+              PCは1つの縦並びにまとめて写真の下に配置する（文字が16px未満に縮まないため、
+              写真の横に置くと狭い画面で重なる。写真の下に置けばどの画面幅でも重ならない） */}
+          <div
             className="
-              [--fs:16] md:[--fs:25]
-              [--right:39] md:[--right:0]
-              [--top:0] md:[--top:343]
-              [--left:0] md:[--left:865]
-              relative z-10 col-start-1 row-start-1
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              pr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
-              text-right
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[1.5]
-              md:self-start md:justify-self-start md:text-left md:leading-[1.25]
+              [--top:580] [--left:865] [--gap:40]
+              contents
+              md:relative md:z-10 md:col-start-1 md:row-start-1 md:flex md:flex-col
+              md:self-start md:justify-self-start
+              md:mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+              md:ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+              md:gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
             "
           >
-            家でもなく、職場でもない。
-            <br />
-            いつもの夜から少し離れて、
-            <br />
-            自分の時間を取り戻せる場所。
-          </p>
-          {/* 店の説明 */}
-          <p
-            className="
-              [--fs:16] md:[--fs:25]
-              [--top:56] md:[--top:453]
-              [--left:53] md:[--left:865]
-              relative z-10 col-start-1 row-start-3
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[1.5]
-              md:row-start-1 md:self-start md:justify-self-start md:leading-[1.25]
-            "
-          >
-            鹿児島・天文館の地下にある
-            <br />
-            「CURRY & BAR BASE」は、
-            <br />
-            カレーとカクテル、
-            <br />
-            そして会話を楽しむための
-            <br />
-            大人の秘密基地です。
-          </p>
+            {/* 導入文（SPは右寄せ、PCは左寄せ） */}
+            <p
+              className="
+                [--fs:14] md:[--fs:18]
+                [--right:39]
+                relative z-10 col-start-1 row-start-1
+                pr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
+                text-right
+                text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                leading-[1.5]
+                md:pr-0 md:text-left md:leading-[1.25]
+              "
+            >
+              家でもなく、職場でもない。
+              <br />
+              いつもの夜から少し離れて、
+              <br />
+              自分の時間を取り戻せる場所。
+            </p>
+            {/* 店の説明 */}
+            <p
+              className="
+                [--fs:14] md:[--fs:18]
+                [--top:56] [--left:53]
+                relative z-10 col-start-1 row-start-3
+                mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+                ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
+                text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                leading-[1.5]
+                md:ml-0 md:mt-0 md:leading-[1.25]
+              "
+            >
+              鹿児島・天文館の地下にある
+              <br />
+              「CURRY & BAR BASE」は、
+              <br />
+              カレーとカクテル、
+              <br />
+              そして会話を楽しむための
+              <br />
+              大人の秘密基地です。
+            </p>
+          </div>
           {/* 左端の縦の飾り線。高さ0の箱からはみ出させ、レイアウトの高さに影響させない */}
           <div aria-hidden="true" className="col-start-1 row-start-1 h-0">
             <span

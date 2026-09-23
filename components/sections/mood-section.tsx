@@ -70,7 +70,7 @@ export function MoodSection() {
         {/* 空気感テキスト */}
         <p
           className="
-            [--fs:16] md:[--fs:25]
+            [--fs:14] md:[--fs:18]
             [--top:77] md:[--top:114]
             [--left:53] md:[--left:371]
             relative z-10 col-start-1 row-start-2
@@ -93,7 +93,7 @@ export function MoodSection() {
           scaleWithViewport
           className="
             [--w:273] md:[--w:407]
-            [--top:55] md:[--top:670]
+            [--top:55] md:[--top:583]
             [--left:2] md:[--left:555]
             grid col-start-1 row-start-3
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
@@ -116,7 +116,7 @@ export function MoodSection() {
         {/* ご来店案内テキスト（SPは右寄せ、PCは左寄せ） */}
         <div
           className="
-            [--top:50] md:[--top:400]
+            [--top:50] md:[--top:353]
             [--right:39] md:[--right:0]
             [--left:0] md:[--left:661]
             [--gap:10] md:[--gap:10]
@@ -128,12 +128,12 @@ export function MoodSection() {
             md:row-start-1 md:self-start md:justify-self-start md:text-left
           "
         >
-          <p className="[--fs:16] md:[--fs:25] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
+          <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
             バーが初めての方も、
             <br />
             お一人でのご来店も大歓迎です。
           </p>
-          <p className="[--fs:16] md:[--fs:25] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
+          <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
             その日の気分に寄り添う一杯を、
             <br />
             一緒に見つけます。
