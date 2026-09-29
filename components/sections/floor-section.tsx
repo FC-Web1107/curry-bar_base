@@ -147,7 +147,9 @@ export function FloorSection() {
               </p>
             </div>
           </div>
-          {/* 店内写真（右列。SPは下の横流しで表示する） */}
+          {/* 店内写真（右列。SPは下の横流しで表示する）
+              パネル幅1049px内に収まるよう、2枚の右端をそろえて右側に27pxの余白を残す
+              （本文左80 + 本文576 + 間16 + 写真350 = 1022） */}
           <div
             className="
               md:[--left:16]
@@ -162,7 +164,7 @@ export function FloorSection() {
           >
             <FadeIn
               className="
-                [--w:318] md:[--w:371]
+                [--w:318] md:[--w:350]
                 w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
               "
             >
@@ -178,9 +180,9 @@ export function FloorSection() {
             <FadeIn
               delay={150}
               className="
-                [--w:280] md:[--w:327]
+                [--w:280] md:[--w:310]
                 [--top:32] md:[--top:75]
-                [--left:0] md:[--left:76]
+                [--left:0] md:[--left:40]
                 self-end
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
                 ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]

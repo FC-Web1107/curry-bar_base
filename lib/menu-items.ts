@@ -4,7 +4,8 @@ export type MenuItem = {
   no: string;
   title: string;
   subtitle: string;
-  description: string;
+  /** 説明文（カード・サブページ共通。デザイン上の改行位置で区切る） */
+  descriptionLines: string[];
   /** カードのボタン文言 */
   linkLabel: string;
   image: {
@@ -22,8 +23,12 @@ export const menuItems: MenuItem[] = [
     no: "01",
     title: "CURRY",
     subtitle: "Baseのカレー",
-    description:
-      "野菜をじっくり溶かし込んだ、甘みからスパイスの余韻へ変化する欧風スパイスカレー。",
+    descriptionLines: [
+      "野菜をじっくり溶かし込んだ",
+      "甘みからスパイスの",
+      "余韻へ変化する",
+      "欧風スパイスカレー",
+    ],
     image: {
       src: "/main/mood/curry.jpg",
       alt: "鉄鍋で提供されるカレー",
@@ -37,8 +42,12 @@ export const menuItems: MenuItem[] = [
     no: "02",
     title: "STORY COCKTAIL",
     subtitle: "物語カクテル",
-    description:
-      "一杯のカクテルに、一つの物語を。舞子の旅シリーズなど、Baseならではのカクテル体験。",
+    descriptionLines: [
+      "一杯のカクテルに",
+      "一つの物語を。",
+      "舞子の旅シリーズなど",
+      "Baseならではのカクテル体験",
+    ],
     image: {
       src: "/main/concept/olvo-cocktail.png",
       alt: "オリジナルカクテル「Olvo」とサインボード",
@@ -52,8 +61,12 @@ export const menuItems: MenuItem[] = [
     no: "03",
     title: "BAR SELECTION",
     subtitle: "豊富なお酒とカクテル",
-    description:
-      "定番から少し珍しいものまで、幅広いラインナップ。豊富なカクテル／鹿児島のお酒／ウイスキー／ワインセラー完備。",
+    descriptionLines: [
+      "定番から少し珍しいものまで",
+      "幅広いラインナップ。",
+      "豊富なカクテル/鹿児島のお酒/",
+      "ウイスキー/ワインセラー完備",
+    ],
     image: {
       src: "/main/how-to/whisky-shelf.jpg",
       alt: "ウイスキーボトルが並ぶバックバーの棚",
@@ -66,9 +79,12 @@ export const menuItems: MenuItem[] = [
     linkLabel: "ガチャで遊ぶ",
     no: "04",
     title: "GACHA BINGO",
-    subtitle: "カクテルガシャビンゴ",
-    description:
-      "何が出るかわからない楽しさと、ビンゴを組み合わせたBaseの遊び体験。",
+    subtitle: "カクテルガチャビンゴ",
+    descriptionLines: [
+      "何が出るかわからない楽しさと",
+      "ビンゴを組み合わせた",
+      "Baseの遊び体験",
+    ],
     image: {
       src: "/main/mood/cocktail-lineup.jpg",
       alt: "色とりどりのカクテルが並ぶバックバー",
@@ -82,8 +98,11 @@ export const menuItems: MenuItem[] = [
     no: "05",
     title: "NON-ALCOHOL",
     subtitle: "ノンアルカクテル",
-    description:
-      "お酒を飲まない夜でも、カクテルらしい特別感や物語を楽しめる一杯。",
+    descriptionLines: [
+      "お酒を飲まない夜でも",
+      "カクテルらしい特別感や",
+      "物語を楽しめる一杯",
+    ],
     image: {
       src: "/main/mood/blue-cocktail.png",
       alt: "カウンターに置かれた青いカクテル",

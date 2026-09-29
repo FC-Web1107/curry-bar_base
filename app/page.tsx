@@ -4,6 +4,7 @@ import { CocktailSection } from "@/components/sections/cocktail-section";
 import { ConceptSection } from "@/components/sections/concept-section";
 import { FloorSection } from "@/components/sections/floor-section";
 import { FvSection } from "@/components/sections/fv-section";
+import { FvSticky } from "@/components/sections/fv-sticky";
 import { HowToSection } from "@/components/sections/how-to-section";
 import { MoodSection } from "@/components/sections/mood-section";
 import { NewsSection } from "@/components/sections/news-section";
@@ -18,18 +19,10 @@ export default function Home() {
         {/* ページ最上部のアンカー。
             FVはstickyでビューポート内に留まり続けるため、#homeのリンク先にできない */}
         <div id="home" aria-hidden="true" />
-        {/* FVは背景として固定し、後続セクションが上に重なって競り上がる。
-            固定はロゴ・ナビが画面トップに達してから始める（FV下部のボタンを見せるため） */}
-        <div
-          className="
-            [--base:390] md:[--base:1280]
-            [--top:24] md:[--top:88]
-            sticky z-0
-            top-[calc(-1*min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px)))]
-          "
-        >
+        {/* FVは背景として固定し、後続セクションが上に重なって競り上がる（固定位置の詳細は FvSticky） */}
+        <FvSticky>
           <FvSection />
-        </div>
+        </FvSticky>
         {/* 固定したFVを見せておく余白。後続セクションが上がってくるまでの間 */}
         <div aria-hidden="true" className="h-[50vh]" />
         <div id="after-fv" className="relative z-10">

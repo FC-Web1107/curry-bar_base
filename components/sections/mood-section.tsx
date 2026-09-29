@@ -77,7 +77,7 @@ export function MoodSection() {
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
             ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
             text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-            leading-[1.25]
+            leading-[1.5]
             md:row-start-1 md:self-start md:justify-self-start
           "
         >
@@ -128,13 +128,13 @@ export function MoodSection() {
             md:row-start-1 md:self-start md:justify-self-start md:text-left
           "
         >
-          <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
+          <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.5]">
             バーが初めての方も
             <br />
-            お一人でのご来店も大歓迎です。
+            お一人でのご来店も<br className="md:hidden" /> 大歓迎です。
           </p>
-          <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.25]">
-            その日の気分に寄り添う一杯を
+          <p className="[--fs:14] md:[--fs:18] text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.5]">
+            その日の気分に<br className="md:hidden" /> 寄り添う一杯を
             <br />
             一緒に見つけます。
             <br />
@@ -171,8 +171,9 @@ export function MoodSection() {
           {/* 20%の黒オーバーレイ（同一セルで重ねる） */}
           <span aria-hidden="true" className="col-start-1 row-start-1 bg-black/20" />
         </Parallax>
-        {/* 右端の縦の飾り線。高さ0の箱からはみ出させ、レイアウトの高さに影響させない */}
-        <div aria-hidden="true" className="col-start-1 row-start-2 h-0 md:row-start-1">
+        {/* 右端の縦の飾り線。高さ0の箱からはみ出させ、レイアウトの高さに影響させない。
+            SPは order-first で描画順を先頭にし、写真の下（背面）に回す（配置は row/col 指定のまま） */}
+        <div aria-hidden="true" className="order-first col-start-1 row-start-2 h-0 md:order-none md:row-start-1">
           <span
             className="
               [--h:776] md:[--h:517]
@@ -186,11 +187,12 @@ export function MoodSection() {
             "
           />
         </div>
-        {/* 縦書きの締めコピー。PCは高さ0の箱からはみ出させ、次のセクション（ウイスキー棚）に重ねる */}
+        {/* 縦書きの締めコピー。PCは高さ0の箱からはみ出させ、次のセクション（ウイスキー棚）に重ねる。
+            縦書きは画面の高さで折り返されるため、背の低い画面でも1列に保つよう nowrap にする */}
         <div className="col-start-1 row-start-6 md:row-start-1 md:h-0">
           <div
             className="
-              [--top:102] md:[--top:717]
+              [--top:100] md:[--top:717]
               [--left:0] md:[--left:314]
               [--gap:27] md:[--gap:24]
               flex flex-row-reverse justify-center
@@ -203,7 +205,7 @@ export function MoodSection() {
             <p
               className="
                 [--fs:26] md:[--fs:30]
-                [writing-mode:vertical-rl]
+                [writing-mode:vertical-rl] whitespace-nowrap
                 text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
                 leading-[1.38] tracking-[0.19em] text-white
               "
@@ -214,7 +216,7 @@ export function MoodSection() {
               className="
                 [--fs:26] md:[--fs:30]
                 [--top:96] md:[--top:56]
-                [writing-mode:vertical-rl] [text-orientation:upright]
+                [writing-mode:vertical-rl] [text-orientation:upright] whitespace-nowrap
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
                 text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
                 leading-[0.96] tracking-[0.05em] text-white

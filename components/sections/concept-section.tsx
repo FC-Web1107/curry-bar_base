@@ -210,8 +210,9 @@ export function ConceptSection() {
               大人の秘密基地です。
             </p>
           </div>
-          {/* 左端の縦の飾り線。高さ0の箱からはみ出させ、レイアウトの高さに影響させない */}
-          <div aria-hidden="true" className="col-start-1 row-start-1 h-0">
+          {/* 左端の縦の飾り線。高さ0の箱からはみ出させ、レイアウトの高さに影響させない。
+              SPは order-first で描画順を先頭にし、写真の下（背面）に回す（配置は row/col 指定のまま） */}
+          <div aria-hidden="true" className="order-first col-start-1 row-start-1 h-0 md:order-none">
             <span
               className="
                 [--h:776] md:[--h:627]

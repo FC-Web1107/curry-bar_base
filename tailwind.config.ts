@@ -24,6 +24,8 @@ const config = {
       },
       fontFamily: {
         mincho: ["var(--font-zen-old-mincho)", "serif"],
+        shippori: ["var(--font-shippori-mincho)", "var(--font-zen-old-mincho)", "serif"],
+        maru: ["var(--font-zen-maru-gothic)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -79,11 +81,17 @@ const config = {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        // ボタン上を斜めの光が左から右へ通り抜ける（1周5秒のうち最初の約1秒で通過し、残りは待機）
+        shine: {
+          "0%": { transform: "translateX(-100%)" },
+          "20%, 100%": { transform: "translateX(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "marquee-left": "marquee-left 20s linear infinite",
+        shine: "shine 5s ease-in-out infinite",
       },
     },
   },

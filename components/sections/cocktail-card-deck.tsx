@@ -4,6 +4,8 @@ import { Children, useEffect, useRef, useState } from "react";
 
 /** 1枚あたりの切り替え間隔（ms）。一定速度で回し続ける */
 const SWITCH_INTERVAL = 2000;
+/** 重ねて見せる枚数（手前のカードを含む）。これより奥のカードは透明にして隠す */
+const VISIBLE_CARDS = 3;
 /** スワイプで送る判定に必要な横移動量（px） */
 const SWIPE_THRESHOLD = 40;
 /** ここを超えて動いたらドラッグ扱いにし、リンク遷移を止める（px） */
@@ -102,6 +104,9 @@ export function CocktailCardDeck({ children, className }: CocktailCardDeckProps)
         // 0が一番手前。奥へいくほど上へずらし、傾けて小さくする
         const depth = (index - front + total) % total;
         const isFront = depth === 0;
+        const isVisible = depth < VISIBLE_CARDS;
+        // 見せない奥のカードは、見えている一番奥のカードと同じ位置に重ねて待機させる
+        const visualDepth = Math.min(depth, VISIBLE_CARDS - 1);
 
         return (
           <div
@@ -109,13 +114,14 @@ export function CocktailCardDeck({ children, className }: CocktailCardDeckProps)
             className={`col-start-1 row-start-1 ${
               isFront && dragging
                 ? ""
-                : "transition-transform duration-700 ease-in-out motion-reduce:transition-none"
+                : "transition-[transform,opacity] duration-700 ease-in-out motion-reduce:transition-none"
             }`}
             style={{
-              transform: `translate(${isFront ? dragX : 0}px, ${-depth * 8}px) rotate(${
-                (depth % 2 === 0 ? -1 : 1) * depth * 1.5
-              }deg) scale(${1 - depth * 0.03})`,
+              transform: `translate(${isFront ? dragX : 0}px, ${-visualDepth * 8}px) rotate(${
+                (visualDepth % 2 === 0 ? -1 : 1) * visualDepth * 1.5
+              }deg) scale(${1 - visualDepth * 0.03})`,
               zIndex: total - depth,
+              opacity: isVisible ? 1 : 0,
             }}
           >
             {card}

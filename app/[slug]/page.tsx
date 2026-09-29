@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight } from "@/components/ui/chevron-right";
+import { MenuText } from "@/components/ui/menu-text";
 import { menuItems } from "@/lib/menu-items";
 import { asset } from "@/lib/utils";
 
@@ -21,7 +22,7 @@ export function generateMetadata({ params }: MenuPageProps): Metadata {
   }
   return {
     title: `${item.title}｜${item.subtitle} | Curry&Bar Base`,
-    description: item.description,
+    description: item.descriptionLines.join(""),
   };
 }
 
@@ -68,73 +69,23 @@ export default function MenuPage({ params }: MenuPageProps) {
           pb-[min(calc(100vw*var(--bottom)/var(--base)),calc(var(--bottom)*1px))]
         "
       >
-        <div className="flex w-full flex-col items-center text-center md:w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]">
-          <p
-            className="
-              [--fs:24] md:[--fs:28]
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-none text-[#cbb394]
-            "
-          >
-            {item.no}
-          </p>
-          <h1
-            className="
-              [--fs:40] md:[--fs:64]
-              [--top:16] md:[--top:20]
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              font-normal
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[1.2]
-            "
-          >
-            {item.title}
-          </h1>
-          <p
-            className="
-              [--fs:17] md:[--fs:20]
-              [--top:12] md:[--top:16]
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[1.6] tracking-[0.2em] text-[#cbb394]
-            "
-          >
-            {item.subtitle}
-          </p>
-          {/* 飾り線 */}
-          <span
-            aria-hidden="true"
-            className="
-              [--w:80]
-              [--top:24] md:[--top:32]
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
-              h-px bg-[#cbb394]/80
-            "
-          />
-          <p
-            className="
-              [--fs:16] md:[--fs:20]
-              [--top:32] md:[--top:40]
-              mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-              leading-[2.2] tracking-[0.06em]
-            "
-          >
-            {item.description}
-          </p>
-          {/* メニュー写真 */}
+        <div className="flex w-full flex-col items-center text-center text-white md:w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]">
+          {/* 番号・タイトル・サブタイトル・説明文（トップのカードと同じ文字サイズ・行間・字間・色） */}
+          <MenuText item={item} headingLevel="h1" />
+          {/* メニュー写真（トップのカード内の写真と同じサイズ・縦長のトリミング。グラデーションは重ねない） */}
           <Image
             src={asset(item.image.src)}
             alt={item.image.alt}
             width={item.image.width}
             height={item.image.height}
             className="
+              [--w:321.4] md:[--w:386]
               [--top:40] md:[--top:56]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
-              aspect-[3/2] w-full border border-[#cbb394]/60 object-cover
+              w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
+              aspect-[386/521] border border-[#cbb394]/60 object-cover
             "
-            sizes="(min-width: 768px) 56vw, 88vw"
+            sizes="(min-width: 768px) 31vw, 83vw"
           />
           {/* TODO: 詳細メニューのコンテンツは未確定 */}
           <p

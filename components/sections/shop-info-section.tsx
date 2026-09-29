@@ -5,9 +5,9 @@ import { asset } from "@/lib/utils";
 const infoRight = [
   {
     label: "営業時間",
-    lines: ["月・火・水・木・日：18:00~03:00", "金・土：18:00~05:00"],
+    lines: ["19:00〜"],
   },
-  { label: "定休日", lines: ["無し"] },
+  { label: "定休日", lines: ["不定休"] },
   { label: "駐車場", lines: ["無し"] },
   {
     label: "総席数",
@@ -84,7 +84,7 @@ export function ShopInfoSection() {
             <div className={`${rowClass} [--bottom:11]`}>
               <dt className={labelClass}>電話番号</dt>
               <dd className="flex min-w-0 flex-col">
-                <span className="text-[18px] [--fs:22] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.4]">050-1792-3067</span>
+                <span className="text-[18px] [--fs:22] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[1.4]">090-4936-7866</span>
                 <span className="mt-0.5 text-[11px] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[17px] md:leading-[1.7]">
                   ホームページを見たとお伝えいただけるとスムーズです。
                 </span>
@@ -139,13 +139,14 @@ export function ShopInfoSection() {
             md:w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
           "
         >
+          {/* 地図は grayscale フィルターで白黒にする（ピンもグレーになる。地図の操作はそのまま使える） */}
           <div className="w-full overflow-hidden aspect-[796/399]">
             <iframe
               src={asset(MAP_EMBED_URL)}
               title="Curry&Bar Base周辺の地図（鹿児島市山之口町12−26 桜屋ビル B1F）"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="h-full w-full border-0"
+              className="h-full w-full border-0 grayscale"
             />
           </div>
           {/* 地図枠外・右下のSNSリンク（TODO: InstagramアカウントのURL未確定のため仮で「#」） */}
