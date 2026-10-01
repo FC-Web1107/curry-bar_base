@@ -12,6 +12,8 @@ type FvStickyProps = {
  * - FVが画面より高い場合（SPの小さい画面など）は、FVの下端が画面下端に来た位置で固定し、
  *   下部のボタン・バッジが隠れたままにならないようにする
  *   （FVの高さをCSS変数 --fv-h に入れ、top を min() で小さい方に決める）
+ * - 後続セクション（#after-fv）がせり上がるにつれて、FVを黒くフェードさせる
+ *   （上端が画面下端にある時 0% → 画面上端に達した時 100%。濃さは CSS変数 --fv-dim）
  */
 export function FvSticky({ children }: FvStickyProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,7 +31,30 @@ export function FvSticky({ children }: FvStickyProps) {
     const observer = new ResizeObserver(updateHeight);
     observer.observe(element);
 
-    return () => observer.disconnect();
+    // 後続セクションのせり上がり量に合わせて、FVに重ねた黒の濃さを変える
+    const next = document.getElementById("after-fv");
+    let frame = 0;
+    const updateDim = () => {
+      if (!next) {
+        return;
+      }
+      const progress = 1 - next.getBoundingClientRect().top / window.innerHeight;
+      element.style.setProperty("--fv-dim", String(Math.max(0, Math.min(1, progress))));
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateDim);
+    };
+    updateDim();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -38,11 +63,16 @@ export function FvSticky({ children }: FvStickyProps) {
       className="
         [--base:390] md:[--base:1280]
         [--top:24] md:[--top:88]
-        sticky z-0
+        sticky z-0 grid grid-cols-[minmax(0,1fr)]
         top-[min(calc(-1*min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))),calc(100svh-var(--fv-h,0px)))]
       "
     >
-      {children}
+      <div className="col-start-1 row-start-1">{children}</div>
+      {/* FVの上に重ねる黒（Gridの同一セル。操作の邪魔をしないよう pointer-events-none） */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none relative z-30 col-start-1 row-start-1 bg-black opacity-[var(--fv-dim,0)]"
+      />
     </div>
   );
 }

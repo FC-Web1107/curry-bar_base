@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { revealClass } from "@/components/ui/reveal-class";
 
 type ParallaxProps = {
   children: React.ReactNode;
@@ -8,6 +9,8 @@ type ParallaxProps = {
   offset?: number;
   /** 移動量も画面幅に応じて縮小する（スケール方式に合わせる） */
   scaleWithViewport?: boolean;
+  /** スクロールでぼかしからフェードインさせる（RevealObserver と併用） */
+  reveal?: boolean;
   className?: string;
 };
 
@@ -15,6 +18,7 @@ export function Parallax({
   children,
   offset = 50,
   scaleWithViewport = false,
+  reveal = false,
   className,
 }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -63,7 +67,11 @@ export function Parallax({
   }, [offset, scaleWithViewport]);
 
   return (
-    <div ref={ref} className={className}>
+    <div
+      ref={ref}
+      data-reveal={reveal ? "" : undefined}
+      className={`${reveal ? revealClass : ""} ${className ?? ""}`}
+    >
       {children}
     </div>
   );

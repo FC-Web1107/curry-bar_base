@@ -9,6 +9,7 @@ import { HowToSection } from "@/components/sections/how-to-section";
 import { MoodSection } from "@/components/sections/mood-section";
 import { NewsSection } from "@/components/sections/news-section";
 import { ShopInfoSection } from "@/components/sections/shop-info-section";
+import { RevealObserver } from "@/components/ui/reveal-observer";
 import { asset } from "@/lib/utils";
 
 export default function Home() {
@@ -25,12 +26,20 @@ export default function Home() {
         </FvSticky>
         {/* 固定したFVを見せておく余白。後続セクションが上がってくるまでの間 */}
         <div aria-hidden="true" className="h-[50vh]" />
-        <div id="after-fv" className="relative z-10">
+        {/* flow-root：中の背景の負のマージンを外へ伝えず、#after-fv の上端（FVの黒フェードの基準）を動かさない */}
+        <div id="after-fv" className="relative z-10 flow-root">
           {/* 漆喰テクスチャの共通背景。
               下地はConceptセクション先頭の #2a2a2a から、Floorセクション末尾（ラッパー下端）の #000000 へ向かうグラデーション。
-              テクスチャは screen で下地に重ねる */}
+              テクスチャは screen で下地に重ねる。
+              上端の境界をぼかすため、背景だけを --fade 分上へ延ばし（負のマージン＋同量の padding で内容の位置は変えない）、
+              延ばした部分を透明→不透明のマスクでFVになじませる */}
           <div
             className="
+              [--base:390] md:[--base:1280]
+              [--fade:80] md:[--fade:160]
+              -mt-[min(calc(100vw*var(--fade)/var(--base)),calc(var(--fade)*1px))]
+              pt-[min(calc(100vw*var(--fade)/var(--base)),calc(var(--fade)*1px))]
+              [mask-image:linear-gradient(to_bottom,transparent_0,#000_min(calc(100vw*var(--fade)/var(--base)),calc(var(--fade)*1px)))]
               [background-size:100%_100%]
               [background-blend-mode:screen]
             "
@@ -49,6 +58,8 @@ export default function Home() {
         </div>
       </main>
       <SiteFooter />
+      {/* data-reveal の要素をスクロールでぼかしからフェードインさせる */}
+      <RevealObserver />
     </>
   );
 }

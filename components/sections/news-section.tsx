@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronRight } from "@/components/ui/chevron-right";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { INSTAGRAM_URL } from "@/lib/sns-links";
 import { asset } from "@/lib/utils";
 
 // TODO: Instagramの投稿・キャプションはFigma上もプレースホルダー（連携方法の確定待ち）
@@ -80,30 +81,57 @@ export function NewsSection() {
             md:flex-row md:items-start md:justify-start
           "
         >
-          {/* Instagramの投稿 */}
-          <ul
+          {/* Instagramの投稿（TODO: 埋め込みフィードに差し替え予定）と「もっと見る」ボタン */}
+          <div
             className="
-              [--gap:16] md:[--gap:24]
               [--left:0] md:[--left:100]
-              grid grid-cols-3
+              flex flex-col items-end
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
-              gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
             "
           >
-            {newsPosts.map((post) => (
-              <li
-                key={post.id}
-                className="[--w:104] md:[--w:200] w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]"
-              >
-                {/* 投稿画像プレースホルダー */}
-                <div aria-hidden="true" className="aspect-[121/143] w-full bg-[#d9d9d9]" />
-                {/* キャプション */}
-                <p className="[--top:16] md:[--top:21] mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))] text-[8px] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[10px] md:leading-[1.7]">
-                  {post.caption}
-                </p>
-              </li>
-            ))}
-          </ul>
+            <ul
+              className="
+                [--gap:16] md:[--gap:24]
+                grid grid-cols-3
+                gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+              "
+            >
+              {newsPosts.map((post) => (
+                <li
+                  key={post.id}
+                  className="[--w:104] md:[--w:200] w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]"
+                >
+                  {/* 投稿画像プレースホルダー */}
+                  <div aria-hidden="true" className="aspect-[121/143] w-full bg-[#d9d9d9]" />
+                  {/* キャプション */}
+                  <p className="[--top:16] md:[--top:21] mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))] text-[8px] [--fs:20] md:text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))] leading-[10px] md:leading-[1.7]">
+                    {post.caption}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            {/* フィードの右下：Instagramのアカウントページへ（外部サイトのため a タグで新しいタブに開く） */}
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                [--top:24] md:[--top:32]
+                [--gap:12] md:[--gap:16]
+                [--fs:16] md:[--fs:20]
+                flex items-center
+                mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
+                gap-[min(calc(100vw*var(--gap)/var(--base)),calc(var(--gap)*1px))]
+                text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
+                leading-[1.4] tracking-[0.06em]
+                transition-opacity duration-300 hover:opacity-70
+              "
+            >
+              もっと見る
+              <span className="sr-only">（Instagram・新しいタブで開きます）</span>
+              <ChevronRight className="h-[10px] w-[6px]" />
+            </a>
+          </div>
           {/* SNSリンク */}
           <div
             className="
@@ -123,17 +151,19 @@ export function NewsSection() {
             >
               Follow us!
             </p>
-            {/* TODO: InstagramアカウントのURL未確定のため仮で「#」 */}
-            <Link
-              href="#"
-              aria-label="Instagram"
+            {/* 外部サイトのため a タグで新しいタブに開く */}
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram（新しいタブで開きます）"
               className="
                 [--top:28] md:[--top:37]
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               "
             >
               <InstagramIcon />
-            </Link>
+            </a>
             {/* TODO: LINE公式アカウントのURL未確定のため仮で「#」 */}
             <Link
               href="#"

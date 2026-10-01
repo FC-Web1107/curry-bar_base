@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Parallax } from "@/components/ui/parallax";
+import { GrowLine } from "@/components/ui/grow-line";
+import { revealClass } from "@/components/ui/reveal-class";
 import { asset } from "@/lib/utils";
 
 // SPデザイン（幅375px）を基準に実装。PC・タブレットはSPの構成を保ったまま数値を調整している
@@ -122,6 +124,8 @@ export function ConceptSection() {
           </div>
         </div>
         {/* 下段：導入文・オリジナルカクテルの写真・店の説明・左端の飾り線。
+            SPは要素の間を広めに取り、テキストの行間も 1.5em + 10px にしている。
+            data-reveal の要素は、上端が画面の上から70%に入ったらぼかしからフェードインする（RevealObserver）。
             SPは行ごとに縦に並べ、PCは全要素を同一セルに重ねて margin で配置する（absolute不使用） */}
         <div
           className="
@@ -132,16 +136,18 @@ export function ConceptSection() {
         >
           {/* オリジナルカクテル「Olvo」の写真。PCでは導入文を上に重ねるため、DOM上は先に置く（SPの順序は row-start で制御） */}
           <div
-            className="
+            data-reveal
+            className={`
+              ${revealClass}
               [--w:276] md:[--w:950]
-              [--top:109] md:[--top:0]
+              [--top:189] md:[--top:0]
               [--left:2] md:[--left:18]
               col-start-1 row-start-2
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
               md:row-start-1 md:self-start md:justify-self-start
-            "
+            `}
           >
             <Image
               src={asset("/main/concept/olvo-cocktail-wide.webp")}
@@ -169,16 +175,18 @@ export function ConceptSection() {
           >
             {/* 導入文（SPは右寄せ、PCは左寄せ） */}
             <p
-              className="
+              data-reveal
+              className={`
+                ${revealClass}
                 [--fs:14] md:[--fs:18]
                 [--right:39]
                 relative z-10 col-start-1 row-start-1
                 pr-[min(calc(100vw*var(--right)/var(--base)),calc(var(--right)*1px))]
                 text-right
                 text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-                leading-[1.5]
+                leading-[calc(1.5em+10px)]
                 md:pr-0 md:text-left md:leading-[1.25]
-              "
+              `}
             >
               家でもなく、職場でもない。
               <br />
@@ -188,16 +196,18 @@ export function ConceptSection() {
             </p>
             {/* 店の説明 */}
             <p
-              className="
+              data-reveal
+              className={`
+                ${revealClass}
                 [--fs:14] md:[--fs:18]
-                [--top:56] [--left:53]
+                [--top:136] [--left:53]
                 relative z-10 col-start-1 row-start-3
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
                 ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
                 text-[clamp(min(16px,calc(var(--fs)*1px)),calc(100vw*var(--fs)/var(--base)),calc(var(--fs)*1px))]
-                leading-[1.5]
+                leading-[calc(1.5em+10px)]
                 md:ml-0 md:mt-0 md:leading-[1.25]
-              "
+              `}
             >
               鹿児島・天文館の地下にある
               <br />
@@ -211,18 +221,18 @@ export function ConceptSection() {
             </p>
           </div>
           {/* 左端の縦の飾り線。高さ0の箱からはみ出させ、レイアウトの高さに影響させない。
+              スクロールに合わせて上から伸びる（GrowLine）。
               SPは order-first で描画順を先頭にし、写真の下（背面）に回す（配置は row/col 指定のまま） */}
           <div aria-hidden="true" className="order-first col-start-1 row-start-1 h-0 md:order-none">
-            <span
+            <GrowLine
               className="
-                [--h:776] md:[--h:627]
+                [--h:1218] md:[--h:627]
                 [--top:42] md:[--top:389]
                 [--left:33] md:[--left:26]
-                block
                 mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
                 ml-[min(calc(100vw*var(--left)/var(--base)),calc(var(--left)*1px))]
                 h-[min(calc(100vw*var(--h)/var(--base)),calc(var(--h)*1px))]
-                w-px bg-white
+                w-px
               "
             />
           </div>

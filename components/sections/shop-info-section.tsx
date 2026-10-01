@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { InstagramIcon } from "@/components/ui/instagram-icon";
+import { INSTAGRAM_URL } from "@/lib/sns-links";
 import { asset } from "@/lib/utils";
 
 const infoRight = [
@@ -149,17 +149,19 @@ export function ShopInfoSection() {
               className="h-full w-full border-0 grayscale"
             />
           </div>
-          {/* 地図枠外・右下のSNSリンク（TODO: InstagramアカウントのURL未確定のため仮で「#」） */}
-          <Link
-            href="#"
-            aria-label="Instagram"
+          {/* 地図枠外・右下のSNSリンク（外部サイトのため a タグで新しいタブに開く） */}
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram（新しいタブで開きます）"
             className="
               [--top:16] md:[--top:24]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
             "
           >
             <InstagramIcon />
-          </Link>
+          </a>
         </div>
       </div>
     </section>
