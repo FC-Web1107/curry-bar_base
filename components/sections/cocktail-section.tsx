@@ -39,7 +39,7 @@ const cardVars: Record<string, { button: string; overlay: string }> = {
   },
   "gacha-bingo": {
     button: "[--top:49.5] lg:[--top:61.4] [--px:38.7] lg:[--px:46.5]",
-    overlay: "[--overlay-center:0.85]",
+    overlay: "[--overlay-center:0.75]",
   },
   "bar-con": {
     button: "[--top:49.5] lg:[--top:61.4] [--px:34.5] lg:[--px:41.4]",

@@ -91,10 +91,10 @@ export const menuItems: MenuItem[] = [
       "Baseの遊び体験",
     ],
     image: {
-      src: "/main/mood/cocktail-lineup.jpg",
-      alt: "色とりどりのカクテルが並ぶバックバー",
-      width: 1179,
-      height: 734,
+      src: "/main/cocktail/gacha-bingo-machine.webp",
+      alt: "ボトルが並ぶカウンターに置かれたガチャマシン",
+      width: 1045,
+      height: 1565,
     },
   },
   {
