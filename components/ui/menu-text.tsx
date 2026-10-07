@@ -7,7 +7,8 @@ export const marginTopClass = "mt-[min(calc(100vw*var(--top)/var(--base)),calc(v
 export const widthClass = "w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]";
 
 // メニューごとに異なる文字の値（支給PDF「Group 6〜10」から取得）。
-// PDFのカード幅325ptを PC 408px / SP 340px に比率換算している。
+// PDFのカード幅325ptを PC 408px / SP 340px に比率換算している（1024px（lg）未満は SP の値）。
+// 使う側で [--base:390] lg:[--base:1280] を指定すること。
 // - フォントサイズ・字間：PDFの文字の実寸（高さ・幅）から逆算
 // - 余白：文字の上下端どうしの距離を再現
 type MenuTextVars = {
@@ -19,34 +20,34 @@ type MenuTextVars = {
 
 const menuTextVars: Record<string, MenuTextVars> = {
   curry: {
-    title: "[--fs:27.2] md:[--fs:32.6] [--top:18.7] md:[--top:22.5] tracking-[0.145em] -mr-[0.145em]",
-    underline: "[--top:16.8] md:[--top:20.1]",
+    title: "[--fs:27.2] lg:[--fs:32.6] [--top:18.7] lg:[--top:22.5] tracking-[0.145em] -mr-[0.145em]",
+    underline: "[--top:16.8] lg:[--top:20.1]",
     subtitle: "tracking-[0.12em] -mr-[0.12em]",
-    description: "[--top:34.5] md:[--top:41.4] tracking-[0.05em]",
+    description: "[--top:34.5] lg:[--top:41.4] tracking-[0.05em]",
   },
   "story-cocktail": {
-    title: "[--fs:25.1] md:[--fs:30.1] [--top:19.7] md:[--top:23.6] tracking-[0.14em] -mr-[0.14em]",
-    underline: "[--top:17.9] md:[--top:21.5]",
+    title: "[--fs:25.1] lg:[--fs:30.1] [--top:19.7] lg:[--top:23.6] tracking-[0.14em] -mr-[0.14em]",
+    underline: "[--top:17.9] lg:[--top:21.5]",
     subtitle: "tracking-[0.08em] -mr-[0.08em]",
-    description: "[--top:30.4] md:[--top:36.5] tracking-[0.08em]",
+    description: "[--top:30.4] lg:[--top:36.5] tracking-[0.08em]",
   },
   "bar-selection": {
-    title: "[--fs:25.1] md:[--fs:30.1] [--top:19.7] md:[--top:23.6] tracking-[0.14em] -mr-[0.14em]",
-    underline: "[--top:17.9] md:[--top:21.5]",
+    title: "[--fs:25.1] lg:[--fs:30.1] [--top:19.7] lg:[--top:23.6] tracking-[0.14em] -mr-[0.14em]",
+    underline: "[--top:17.9] lg:[--top:21.5]",
     subtitle: "tracking-[0.01em] -mr-[0.01em]",
-    description: "[--top:30.4] md:[--top:36.5] tracking-[0.1em]",
+    description: "[--top:30.4] lg:[--top:36.5] tracking-[0.1em]",
   },
   "gacha-bingo": {
-    title: "[--fs:26.1] md:[--fs:31.3] [--top:18.7] md:[--top:22.5] tracking-[0.14em] -mr-[0.14em]",
-    underline: "[--top:17.8] md:[--top:21.3]",
+    title: "[--fs:26.1] lg:[--fs:31.3] [--top:18.7] lg:[--top:22.5] tracking-[0.14em] -mr-[0.14em]",
+    underline: "[--top:17.8] lg:[--top:21.3]",
     subtitle: "tracking-[-0.01em] mr-[0.01em]",
-    description: "[--top:31.4] md:[--top:37.7] tracking-[0.135em]",
+    description: "[--top:30.4] lg:[--top:36.5] tracking-[0.135em]",
   },
-  "non-alcohol": {
-    title: "[--fs:26.1] md:[--fs:31.3] [--top:18.7] md:[--top:22.5] tracking-[0.14em] -mr-[0.14em]",
-    underline: "[--top:17.8] md:[--top:21.3]",
-    subtitle: "tracking-[-0.02em] mr-[0.02em]",
-    description: "[--top:31.4] md:[--top:37.7] tracking-[0.15em]",
+  "bar-con": {
+    title: "[--fs:26.1] lg:[--fs:31.3] [--top:18.7] lg:[--top:22.5] tracking-[0.14em] -mr-[0.14em]",
+    underline: "[--top:17.8] lg:[--top:21.3]",
+    subtitle: "tracking-[0.08em] -mr-[0.08em]",
+    description: "[--top:30.4] lg:[--top:36.5] tracking-[0.15em]",
   },
 };
 
@@ -67,7 +68,7 @@ export function MenuText({ item, headingLevel: Heading }: MenuTextProps) {
     <>
       <p
         className={`
-          [--fs:22] md:[--fs:26.5]
+          [--fs:22] lg:[--fs:26.5]
           ${fontSizeClass} font-normal leading-none tracking-[0.46em] -mr-[0.46em] text-[#ca8e42]
         `}
       >
@@ -79,22 +80,24 @@ export function MenuText({ item, headingLevel: Heading }: MenuTextProps) {
       {/* 飾り下線 */}
       <span
         aria-hidden="true"
-        className={`[--w:84.2] md:[--w:101] ${marginTopClass} ${widthClass} h-px bg-white ${vars.underline}`}
+        className={`[--w:84.2] lg:[--w:101] ${marginTopClass} ${widthClass} h-px bg-white ${vars.underline}`}
       />
       <p
         className={`
-          [--fs:16.7] md:[--fs:20.1] [--top:17.3] md:[--top:20.7]
-          ${marginTopClass} ${fontSizeClass} font-maru font-normal leading-none
+          [--fs:16.7] lg:[--fs:20.1] [--top:17.3] lg:[--top:20.7]
+          ${marginTopClass} ${fontSizeClass} font-shippori font-normal leading-none
           ${vars.subtitle}
         `}
       >
         {item.subtitle}
       </p>
-      {/* 説明文（デザイン上の改行位置で改行する） */}
+      {/* 説明文（デザイン上の改行位置で改行する）。
+          3行のメニューも4行分の高さを取り、カードの高さ・ボタンの位置を全メニューでそろえる */}
       <p
         className={`
-          [--fs:16.8] md:[--fs:20.2]
-          ${marginTopClass} ${fontSizeClass} font-maru font-normal leading-[1.37]
+          [--fs:16.8] lg:[--fs:20.2]
+          ${marginTopClass} ${fontSizeClass} font-shippori font-normal leading-[1.37]
+          min-h-[calc(1.37em*4)]
           ${vars.description}
         `}
       >

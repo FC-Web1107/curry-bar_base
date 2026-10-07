@@ -8,6 +8,8 @@ export type MenuItem = {
   descriptionLines: string[];
   /** カードのボタン文言 */
   linkLabel: string;
+  /** 外部サイトへ飛ばす場合のリンク先（指定時はサブページを作らず、カードから新しいタブで開く） */
+  externalUrl?: string;
   image: {
     src: string;
     alt: string;
@@ -24,10 +26,9 @@ export const menuItems: MenuItem[] = [
     title: "CURRY",
     subtitle: "Baseのカレー",
     descriptionLines: [
-      "野菜をじっくり溶かし込んだ",
-      "甘みからスパイスの",
-      "余韻へ変化する",
-      "欧風スパイスカレー",
+      "野菜をじっくり溶かし込み、",
+      "甘みからスパイスの余韻へ。",
+      "夜の締めに合うBaseカレー",
     ],
     image: {
       src: "/main/mood/curry.jpg",
@@ -39,14 +40,16 @@ export const menuItems: MenuItem[] = [
   {
     slug: "story-cocktail",
     linkLabel: "物語を選ぶ",
+    // 物語を選ぶ（カクテル図鑑）
+    externalUrl: "https://story-collection-pi.vercel.app",
     no: "02",
     title: "STORY COCKTAIL",
     subtitle: "物語カクテル",
     descriptionLines: [
-      "一杯のカクテルに",
+      "一杯のカクテルに、",
       "一つの物語を。",
-      "舞子の旅シリーズなど",
-      "Baseならではのカクテル体験",
+      "味と物語を楽しむ、",
+      "Baseだけの一杯",
     ],
     image: {
       src: "/main/concept/olvo-cocktail.png",
@@ -77,6 +80,8 @@ export const menuItems: MenuItem[] = [
   {
     slug: "gacha-bingo",
     linkLabel: "ガチャで遊ぶ",
+    // カクテルガチャビンゴ
+    externalUrl: "https://cocktail-gacha-bingo-preview.pages.dev",
     no: "04",
     title: "GACHA BINGO",
     subtitle: "カクテルガチャビンゴ",
@@ -93,21 +98,23 @@ export const menuItems: MenuItem[] = [
     },
   },
   {
-    slug: "non-alcohol",
-    linkLabel: "ノンアルを見る",
+    slug: "bar-con",
+    linkLabel: "イベントを見る",
+    // BAR CON（少人数交流イベント）
+    externalUrl: "https://bar-con-event.pages.dev",
     no: "05",
-    title: "NON-ALCOHOL",
-    subtitle: "ノンアルカクテル",
+    title: "BAR CON",
+    subtitle: "少人数交流イベント",
     descriptionLines: [
-      "お酒を飲まない夜でも",
-      "カクテルらしい特別感や",
-      "物語を楽しめる一杯",
+      "少人数で話しやすい、",
+      "一人参加も歓迎の",
+      "Baseで開催する交流イベント",
     ],
     image: {
-      src: "/main/mood/blue-cocktail.png",
-      alt: "カウンターに置かれた青いカクテル",
-      width: 816,
-      height: 1020,
+      src: "/main/cocktail/bar-con-event.webp",
+      alt: "明るい店内でカレーやドリンクを囲み、店員と談笑する参加者たちのイラスト",
+      width: 1122,
+      height: 1402,
     },
   },
 ];

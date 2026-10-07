@@ -126,10 +126,11 @@ export function ConceptSection() {
         {/* 下段：導入文・オリジナルカクテルの写真・店の説明・左端の飾り線。
             SPは要素の間を広めに取り、テキストの行間も 1.5em + 10px にしている。
             data-reveal の要素は、上端が画面の上から70%に入ったらぼかしからフェードインする（RevealObserver）。
-            SPは行ごとに縦に並べ、PCは全要素を同一セルに重ねて margin で配置する（absolute不使用） */}
+            SPは行ごとに縦に並べ、PCは全要素を同一セルに重ねて margin で配置する（absolute不使用）。
+            SPの上の余白は、上のイラストがパララックスで最大53px下へずれても導入文に重ならず、20px以上空くようにしている */}
         <div
           className="
-            [--top:67] md:[--top:13]
+            [--top:140] md:[--top:13]
             grid
             mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
           "

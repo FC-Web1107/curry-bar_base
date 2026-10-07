@@ -124,20 +124,20 @@ export function FloorSection() {
               "
             >
               <p className={bodyParagraphClass}>
-                オレンジ色の螺旋階段を降りた先にある、Curry & Bar Base。
+                オレンジ色の螺旋階段を降りた先にある、<br className="md:hidden" /> Curry & Bar Base。
               </p>
               <p className={bodyParagraphClass}>
-                地下にに広がるのは、秘密基地のような遊び心のある空間。
+                地下にに広がるのは、秘密基地のような<br className="md:hidden" /> 遊び心のある空間。
               </p>
               <p className={bodyParagraphClass}>
                 棚に並ぶさまざまなお酒。
                 <br />
-                自由に楽しめるボードゲームや本。店主が好きなものを、
+                自由に楽しめるボードゲームや本。<br className="md:hidden" /> 店主が好きなものを、
                 <br />
                 少しずつ集めてつくりました。
               </p>
               <p className={bodyParagraphClass}>
-                一人で静かに過ごしたい夜も、誰かとゆっくり語りたい夜も。
+                一人で静かに過ごしたい夜も、<br className="md:hidden" /> 誰かとゆっくり語りたい夜も。
               </p>
               {/* TODO: 後半2行はデザイナーからの申し送りと思われる文言（正式文言の確定待ち） */}
               <p className={bodyParagraphClass}>

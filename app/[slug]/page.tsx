@@ -11,8 +11,14 @@ type MenuPageProps = {
   params: { slug: string };
 };
 
+// generateStaticParams で作ったページ以外は 404 にする（外部リンクのメニューや旧URLを含む）
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return menuItems.map((item) => ({ slug: item.slug }));
+  // 外部サイトへ飛ばすメニュー（externalUrl あり）はサブページを作らない
+  return menuItems
+    .filter((item) => !item.externalUrl)
+    .map((item) => ({ slug: item.slug }));
 }
 
 export function generateMetadata({ params }: MenuPageProps): Metadata {
@@ -70,23 +76,26 @@ export default function MenuPage({ params }: MenuPageProps) {
         "
       >
         <div className="flex w-full flex-col items-center text-center text-white md:w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]">
-          {/* 番号・タイトル・サブタイトル・説明文（トップのカードと同じ文字サイズ・行間・字間・色） */}
-          <MenuText item={item} headingLevel="h1" />
-          {/* メニュー写真（トップのカード内の写真と同じサイズ・縦長のトリミング。グラデーションは重ねない） */}
-          <Image
-            src={asset(item.image.src)}
-            alt={item.image.alt}
-            width={item.image.width}
-            height={item.image.height}
-            className="
-              [--w:321.4] md:[--w:386]
-              [--top:40] md:[--top:56]
+          {/* 番号・タイトル・サブタイトル・説明文・写真はトップのカードと同じく 1024px（lg）で SP / PC を切り替える */}
+          <div className="[--base:390] lg:[--base:1280] flex flex-col items-center">
+            {/* 番号・タイトル・サブタイトル・説明文（トップのカードと同じ文字サイズ・行間・字間・色） */}
+            <MenuText item={item} headingLevel="h1" />
+            {/* メニュー写真（トップのカード内の写真と同じサイズ・縦長のトリミング。グラデーションは重ねない） */}
+            <Image
+              src={asset(item.image.src)}
+              alt={item.image.alt}
+              width={item.image.width}
+              height={item.image.height}
+              className="
+              [--w:321.4] lg:[--w:386]
+              [--top:40] lg:[--top:56]
               mt-[min(calc(100vw*var(--top)/var(--base)),calc(var(--top)*1px))]
               w-[min(calc(100vw*var(--w)/var(--base)),calc(var(--w)*1px))]
               aspect-[386/521] border border-[#cbb394]/60 object-cover
             "
-            sizes="(min-width: 768px) 31vw, 83vw"
-          />
+              sizes="(min-width: 1024px) 31vw, 83vw"
+            />
+          </div>
           {/* TODO: 詳細メニューのコンテンツは未確定 */}
           <p
             className="

@@ -20,7 +20,7 @@ export default function Home() {
         {/* ページ最上部のアンカー。
             FVはstickyでビューポート内に留まり続けるため、#homeのリンク先にできない */}
         <div id="home" aria-hidden="true" />
-        {/* FVは背景として固定し、後続セクションが上に重なって競り上がる（固定位置の詳細は FvSticky） */}
+        {/* FVは背景として固定し、後続セクションが上に重なって競り上がる（中身のずらし方・黒フェードの詳細は FvSticky） */}
         <FvSticky>
           <FvSection />
         </FvSticky>

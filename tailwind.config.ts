@@ -25,7 +25,6 @@ const config = {
       fontFamily: {
         mincho: ["var(--font-zen-old-mincho)", "serif"],
         shippori: ["var(--font-shippori-mincho)", "var(--font-zen-old-mincho)", "serif"],
-        maru: ["var(--font-zen-maru-gothic)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
